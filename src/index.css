@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .RTL {
+        direction: rtl;
+    }
+
+    .btn {
+        padding: 14px;
+        border-radius: 0.5rem;
+        transition: all 200ms;
+        cursor: pointer;
+    }
+    .btn-green {
+        @apply bg-light_green text-main fill-main hover:fill-white hover:bg-main hover:text-lightWhite;
+    }
+}
