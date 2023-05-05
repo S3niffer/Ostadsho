@@ -17,13 +17,13 @@ export default {
                 ThirdGray: '#69727d',
                 yellowColor: '#ffc737',
                 main: '#52ac66',
-                darkBlack: '##101214',
+                light_green: '#52AC661F',
+                darkBlack: '#101214',
                 darkSecondaryBlack: '#201c1c',
-                darkThirdBlack: '#1a1d1f',
-                darkFourthBlack: '#2b3034'
+                darkThirdBlack: '#2b3034',
+                darkFourthBlack: '#1A1D1F'
             }
-        }
-        ,
+        },
         screens: {
             'vsm': '450px',
             'sm': '640px',
@@ -32,12 +32,6 @@ export default {
             'xl': '1280px',
             '2xl': '1536px'
         },
-        fontFamily: {
-            IRANSans: 'IRANSans'
-        }
-    },
-    theme: {
-        extend: {},
     },
     plugins: [],
 }
