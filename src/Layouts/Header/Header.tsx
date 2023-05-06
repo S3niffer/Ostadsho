@@ -19,7 +19,7 @@ const Header = () => {
                 </div>
                 <div className="right-section flex gap-16 items-center">
                     <div className="logo  w-[140px] h-[52px] bg-no-repeat bg-cover ">
-                        <img src={image} alt="logo" className="w-full h-full" />
+                        <img src={image} alt="logo" className="w-full h-full duration-500 cursor-pointer hover:scale-110" />
                     </div>
                     <div className="hidden lg:block">
                         <Navbar />
