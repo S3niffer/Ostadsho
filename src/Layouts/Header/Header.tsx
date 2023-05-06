@@ -11,10 +11,10 @@ const Header = () => {
     return (
         <div className="Header  px-4 py-8 bg-lightWhite shadow-lg dark:bg-darkThirdBlack">
             <div className="container mx-auto flex justify-between items-center flex-wrap">
-                <div className="btn btn-green lg:hidden">
+                <div className="btn btn-green lg:hidden aspect-square">
                     <FontAwesomeIcon
                         icon={faBars}
-                        className="mt-1 text-xl w-12 aspect-square"
+                        className="mt-1 text-xl w-12"
                     />
                 </div>
                 <div className="right-section flex gap-16 items-center">
@@ -26,13 +26,13 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="btn btn-green hidden lg:block px-0">
+                    <div className="btn btn-green hidden lg:block">
                         <FontAwesomeIcon
                             icon={faSearch}
                             className="mx-1 text-xl w-12 aspect-square"
                         />
                     </div>
-                    <div className="btn btn-green px-0">
+                    <div className="btn btn-green">
                         <FontAwesomeIcon
                             icon={faBasketShopping}
                             className="mx-1 text-xl w-12 aspect-square"
