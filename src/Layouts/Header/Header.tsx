@@ -7,11 +7,18 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeChangerBtn from "../../components/ThemeChangerBtn/ThemeChangerBtn";
 import Navbar from "../Navbar/Navbar";
+import MenuBar from "../MenuBar/MenuBar";
+import { useState } from "react";
 const Header = () => {
+
+    const [showMenuBar, setShowMenuBar] = useState(false)
+
     return (
-        <div className="Header  px-4 py-8 bg-lightWhite shadow-lg dark:bg-darkThirdBlack">
+        <div className="Header px-4 py-8 bg-lightWhite shadow-lg mb-8 dark:bg-darkThirdBlack">
             <div className="container mx-auto flex justify-between items-center flex-wrap">
-                <div className="btn btn-green lg:hidden aspect-square">
+                <div
+                    onClick={() => setShowMenuBar(true)}
+                    className="btn btn-green lg:hidden aspect-square">
                     <FontAwesomeIcon
                         icon={faBars}
                         className="mt-1 text-xl w-12"
@@ -29,13 +36,13 @@ const Header = () => {
                     <div className="btn btn-green hidden lg:block">
                         <FontAwesomeIcon
                             icon={faSearch}
-                            className="mx-1 text-xl w-12 aspect-square"
+                            className="mx-1 mt-1 text-xl w-12 aspect-square"
                         />
                     </div>
                     <div className="btn btn-green">
                         <FontAwesomeIcon
                             icon={faBasketShopping}
-                            className="mx-1 text-xl w-12 aspect-square"
+                            className="mx-1 mt-1 text-xl w-12 aspect-square"
                         />
                     </div>
                     <div className="hidden lg:block">
@@ -43,6 +50,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            <MenuBar active={showMenuBar} activeHandler={setShowMenuBar} />
         </div>
     );
 };

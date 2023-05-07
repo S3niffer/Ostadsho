@@ -1,6 +1,6 @@
 import NavbarItem, { TnavbarItem } from "../../components/NavbarItem/NavbarItem";
 
-const NavbarItems: TnavbarItem[] = [
+export const NavbarItems: TnavbarItem[] = [
     {
         id: 0, title: 'برنامه نویسی', link: '', submenu: [
             { id: 0, link: '', title: 'هوش مصنوعی' },
