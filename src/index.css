@@ -17,3 +17,28 @@
         @apply bg-light_green text-main fill-main hover:fill-white hover:bg-main hover:text-lightWhite;
     }
 }
+
+@font-face {
+    font-family: "yekaBakh";
+    src: url(Assets/YekanBakhFaNum-Regular.woff2) format("woff2");
+}
+@font-face {
+    font-family: "yekaBakhBold";
+    src: url(Assets/YekanBakhFaNum-Bold.woff2) format("woff2");
+}
+@font-face {
+    font-family: "yekaBakhLight";
+    src: url(Assets/YekanBakhFaNum-Light.woff2) format("woff2");
+}
+@font-face {
+    font-family: "yekaBakhHeavy";
+    src: url(Assets/YekanBakhFaNum-Heavy.woff2) format("woff2");
+}
+@font-face {
+    font-family: "danafa";
+    src: url(Assets/dana-fanum-regular.woff2) format("woff2");
+}
+@font-face {
+    font-family: "danafaBold";
+    src: url(Assets/dana-fanum-bold.woff2) format("woff2");
+}
