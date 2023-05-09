@@ -15,13 +15,13 @@ const Header = () => {
 
     return (
         <div className="Header px-4 py-8 bg-lightWhite shadow-lg mb-8 dark:bg-darkThirdBlack">
-            <div className="container mx-auto flex justify-between items-center flex-wrap">
+            <div className="container flex justify-between items-center flex-wrap">
                 <div
                     onClick={() => setShowMenuBar(true)}
-                    className="btn btn-green lg:hidden aspect-square">
+                    className="btn btn-green flex place-items-center lg:hidden aspect-square">
                     <FontAwesomeIcon
                         icon={faBars}
-                        className="mt-1 text-xl w-12"
+                        className="text-xl w-12"
                     />
                 </div>
                 <div className="right-section flex gap-16 items-center">
@@ -33,16 +33,16 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="btn btn-green hidden lg:block">
+                    <div className="btn btn-green hidden lg:flex place-items-center">
                         <FontAwesomeIcon
                             icon={faSearch}
-                            className="mx-1 mt-1 text-xl w-12 aspect-square"
+                            className="mx-1 text-xl w-12 aspect-square"
                         />
                     </div>
-                    <div className="btn btn-green">
+                    <div className="btn btn-green flex place-items-center">
                         <FontAwesomeIcon
                             icon={faBasketShopping}
-                            className="mx-1 mt-1 text-xl w-12 aspect-square"
+                            className="mx-1 text-xl w-12 aspect-square"
                         />
                     </div>
                     <div className="hidden lg:block">
