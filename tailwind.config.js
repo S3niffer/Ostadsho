@@ -22,16 +22,31 @@ export default {
                 darkSecondaryBlack: '#201c1c',
                 darkThirdBlack: '#2b3034',
                 darkFourthBlack: '#1A1D1F'
+            },
+            screens: {
+                '2xs': '380px',
+                'xs': '450px',
+                'bml': '900px'
+            },
+            fontFamily: {
+                yekaBakh: 'yekaBakh',
+                yekaBakhBold: 'yekaBakhBold',
+                yekaBakhLight: 'yekaBakhLight',
+                yekaBakhHeavy: 'yekaBakhHeavy',
+                danafa: 'danafa',
+                danafaBold: 'danafaBold',
+            },
+        },
+        container: {
+            center: true,
+            screens: {
+                'sm': '640px',
+                'md': '768px',
+                'bml': '860px',
+                'lg': '1024px',
+                'xl': '1280px'
             }
-        },
-        screens: {
-            'vsm': '450px',
-            'sm': '640px',
-            'md': '768px',
-            'lg': '1024px',
-            'xl': '1280px',
-            '2xl': '1536px'
-        },
+        }
     },
     plugins: [],
 }
