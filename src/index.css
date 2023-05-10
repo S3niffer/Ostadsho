@@ -18,6 +18,13 @@
     }
 }
 
+input:checked ~ .ul-container {
+    max-height: 100vh;
+}
+input:checked ~ .icon-container svg {
+    transform: rotate(0);
+}
+
 @font-face {
     font-family: "yekaBakh";
     src: url(Assets/YekanBakhFaNum-Regular.woff2) format("woff2");
@@ -41,4 +48,16 @@
 @font-face {
     font-family: "danafaBold";
     src: url(Assets/dana-fanum-bold.woff2) format("woff2");
+}
+@font-face {
+    font-family: "danafaBold";
+    src: url(Assets/dana-fanum-bold.woff2) format("woff2");
+}
+@font-face {
+    font-family: "RokhFaNumLight";
+    src: url(Assets/RokhFaNum-Light.woff) format("woff");
+}
+@font-face {
+    font-family: "RokhFaNumBold";
+    src: url(Assets/RokhFaNum-Bold.woff) format("woff");
 }

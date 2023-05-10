@@ -35,6 +35,8 @@ export default {
                 yekaBakhHeavy: 'yekaBakhHeavy',
                 danafa: 'danafa',
                 danafaBold: 'danafaBold',
+                RokhFaNumLight: 'RokhFaNumLight',
+                RokhFaNumBold: 'RokhFaNumBold',
             },
         },
         container: {
