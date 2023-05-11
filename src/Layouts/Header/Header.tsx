@@ -14,7 +14,7 @@ const Header = () => {
     const [showMenuBar, setShowMenuBar] = useState(false)
 
     return (
-        <div className="Header px-4 py-8 bg-lightWhite shadow-lg mb-8 dark:bg-darkThirdBlack">
+        <div className="Header px-4 py-8 bg-lightWhite shadow-lg mb-8 dark:bg-darkFourthBlack">
             <div className="container flex justify-between items-center flex-wrap">
                 <div
                     onClick={() => setShowMenuBar(true)}
