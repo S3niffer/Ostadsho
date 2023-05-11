@@ -27,7 +27,7 @@ const MenuBarItem = (item: TnavbarItem) => {
                         <ul className=" flex flex-col gap-1 pt-4">
                             {
                                 item.submenu.map(subItem => (
-                                    <li key={subItem.id} className="cursor-pointer bg-lightSecondaryWhite dark:bg-darkFourthBlack hover:bg-light_green hover:text-main text-sm pr-4 rounded-lg py-2">{subItem.title}</li>
+                                    <li key={subItem.id} className="cursor-pointer bg-lightSecondaryWhite dark:bg-darkThirdBlack dark:hover:bg-light_green hover:bg-light_green hover:text-main text-sm pr-4 rounded-lg py-2">{subItem.title}</li>
                                 ))
                             }
                         </ul>
