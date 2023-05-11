@@ -15,6 +15,7 @@ export default {
                 Gray: '#4b515a',
                 SecondaryGray: '#cccccc',
                 ThirdGray: '#69727d',
+                FourthGray: '#bababa',
                 yellowColor: '#ffc737',
                 main: '#52ac66',
                 light_green: '#52AC661F',
