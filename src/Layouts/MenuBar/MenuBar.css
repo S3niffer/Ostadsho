@@ -1,6 +1,0 @@
-input:checked ~ .ul-container {
-    max-height: 100vh;
-}
-input:checked ~ .icon-container svg {
-    transform: rotate(0);
-}
