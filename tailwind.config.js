@@ -18,6 +18,7 @@ export default {
                 FourthGray: '#bababa',
                 FifthGray: '#868686',
                 darksixthGray: '#4b515a',
+                darkseventhGray: '#717070',
                 yellowColor: '#ffc737',
                 main: '#52ac66',
                 secnodryMain: '#6acc62',
