@@ -40,40 +40,63 @@ input:checked ~ .icon-container svg {
 .courseCardShadow {
     box-shadow: 0px 0px 35px 5px rgba(0, 0, 0, 0.1);
 }
+.commentsSwiper .swiper-slide > div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: all 0.3s;
+}
+.commentsSwiper .swiper-slide.swiper-slide-visible > div::after {
+    opacity: 0;
+}
+.commentsSwiper .swiper-slide-shadow {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+.commentsSwiper .swiper-slide {
+    overflow: visible !important;
+}
+.commentsSwiper .swiper-slide-visible > div > img {
+    filter: blur(0);
+}
 
 @font-face {
     font-family: "yekaBakh";
-    src: url(Assets/YekanBakhFaNum-Regular.woff2) format("woff2");
+    src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhBold";
-    src: url(Assets/YekanBakhFaNum-Bold.woff2) format("woff2");
+    src: url(Assets/fonts/YekanBakhFaNum-Bold.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhLight";
-    src: url(Assets/YekanBakhFaNum-Light.woff2) format("woff2");
+    src: url(Assets/fonts/YekanBakhFaNum-Light.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhHeavy";
-    src: url(Assets/YekanBakhFaNum-Heavy.woff2) format("woff2");
+    src: url(Assets/fonts/YekanBakhFaNum-Heavy.woff2) format("woff2");
 }
 @font-face {
     font-family: "danafa";
-    src: url(Assets/dana-fanum-regular.woff2) format("woff2");
+    src: url(Assets/fonts/dana-fanum-regular.woff2) format("woff2");
+    src: url(Assets/fonts/DanaFaNum-Regular.woff2) format("woff2");
 }
 @font-face {
     font-family: "danafaBold";
-    src: url(Assets/dana-fanum-bold.woff2) format("woff2");
-}
-@font-face {
-    font-family: "danafaBold";
-    src: url(Assets/dana-fanum-bold.woff2) format("woff2");
+    src: url(Assets/fonts/DanaFaNum-Bold.woff) format("woff");
+    src: url(Assets/fonts/dana-fanum-bold.woff2) format("woff2");
 }
 @font-face {
     font-family: "RokhFaNumLight";
-    src: url(Assets/RokhFaNum-Light.woff) format("woff");
+    src: url(Assets/fonts/RokhFaNum-Light.woff) format("woff");
 }
 @font-face {
     font-family: "RokhFaNumBold";
-    src: url(Assets/RokhFaNum-Bold.woff) format("woff");
+    src: url(Assets/fonts/RokhFaNum-Bold.woff) format("woff");
 }
