@@ -10,14 +10,14 @@ export type CourseCardT = {
 
 const CourseCard = ({ id, hrefLink, imageSrc, price, title, BeforeDiscount }: CourseCardT) => {
     return (
-        <div className="courseCard relative pt-4">
+        <div className="courseCard relative pt-4 px-2 md:px-0">
             <div className="bg-lightWhite dark:bg-darkFourthBlack courseCardShadow rounded-md pt-32 lg:pt-24">
-                <div className="flex flex-col gap-8 w-full h-full  p-3 pt-0 ">
+                <div className="flex flex-col gap-8 xl:gap-10 w-full h-full  p-3 pt-0 ">
                     <p className="cursor-pointer inline max-w-max hover:text-main transition-colors duration-300 font-yekaBakhBold lg:text-lg">
                         {title}
                     </p>
                     <div className="flex justify-between items-center">
-                        <div className="flex gap-2">
+                        <div className="flex items-center gap-2">
                             {
                                 price ? (
                                     <>
@@ -28,7 +28,7 @@ const CourseCard = ({ id, hrefLink, imageSrc, price, title, BeforeDiscount }: Co
                                                 </span>
                                             ) : null
                                         }
-                                        <span className="font-danafaBold text-Gray/95 dark:text-Gray text-darksixthGray xl:text-lg select-none">
+                                        <span className="font-danafa font-black dark:text-lightFourthWhite text-darksixthGray xl:text-lg select-none">
                                             {
                                                 price.toLocaleString('en-us')
                                             }
