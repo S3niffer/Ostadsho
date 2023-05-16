@@ -12,6 +12,7 @@ export default {
                 lightSecondaryWhite: '#ededed',
                 lightThirdWhite: '#f9f9f9',
                 lightFourthWhite: '#f5f5f5',
+                lightFifthhWhite: '#FFFFFF7A',
                 Gray: '#4b515a',
                 SecondaryGray: '#cccccc',
                 ThirdGray: '#69727d',
