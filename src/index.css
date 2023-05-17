@@ -6,7 +6,18 @@
     .RTL {
         direction: rtl;
     }
-
+    .LTR {
+        direction: ltr;
+    }
+    ::-webkit-scrollbar {
+        @apply bg-transparent dark:bg-darkBlack;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply bg-ThirdGray dark:bg-lightFifthhWhite hover:bg-SecondaryGray;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-Gray dark:bg-SecondaryGray;
+    }
     .btn {
         padding: 14px 0;
         border-radius: 0.5rem;
@@ -17,10 +28,17 @@
         @apply bg-light_green text-main fill-main hover:fill-white hover:bg-main hover:text-lightWhite;
     }
 }
+@media (min-height: 50vh) {
+    .pr-Inscroll {
+        padding-right: 5px;
+        margin: 5px 0;
+    }
+}
 
 input:checked ~ .ul-container {
     max-height: 100vh;
 }
+
 input:checked ~ .icon-container svg {
     transform: rotate(0);
 }
@@ -40,6 +58,7 @@ input:checked ~ .icon-container svg {
 .courseCardShadow {
     box-shadow: 0px 0px 35px 5px rgba(0, 0, 0, 0.1);
 }
+
 .commentsSwiper .swiper-slide > div::after {
     content: "";
     display: block;
@@ -52,20 +71,39 @@ input:checked ~ .icon-container svg {
     -webkit-backdrop-filter: blur(2px);
     transition: all 0.3s;
 }
+
 .commentsSwiper .swiper-slide.swiper-slide-visible > div::after {
     opacity: 0;
 }
+
 .commentsSwiper .swiper-slide-shadow {
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
+
 .commentsSwiper .swiper-slide {
     overflow: visible !important;
 }
+
 .commentsSwiper .swiper-slide-visible > div > img {
     filter: blur(0);
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+* {
+    scrollbar-width: 8px;
+}
 @font-face {
     font-family: "yekaBakh";
     src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
