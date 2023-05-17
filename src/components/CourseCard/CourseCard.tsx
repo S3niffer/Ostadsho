@@ -28,7 +28,7 @@ const CourseCard = ({ id, hrefLink, imageSrc, price, title, BeforeDiscount }: Co
                                                 </span>
                                             ) : null
                                         }
-                                        <span className="font-danafa font-black dark:text-lightFourthWhite text-darksixthGray xl:text-lg select-none">
+                                        <span className="font-danafa font-black dark:text-lightFourthWhite text-Gray xl:text-lg select-none">
                                             {
                                                 price.toLocaleString('en-us')
                                             }
