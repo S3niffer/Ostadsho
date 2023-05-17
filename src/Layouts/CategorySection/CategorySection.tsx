@@ -75,16 +75,16 @@ const CategorySection = () => {
                 >
                     {
                         CategoryItems.map(item => (
-                            <SwiperSlide className="text-Gray dark:bg-darkFourthBlack flex flex-col items-center p-2 rounded-md hover:bg-main dark:hover:bg-main dark:text-lightWhite hover:text-lightWhite cursor-pointer transition-all duration-300 group/swiperslide mb-8 shadow-lg">
+                            <SwiperSlide key={item.id} className="text-Gray dark:bg-darkFourthBlack flex flex-col items-center p-2 rounded-md hover:bg-main dark:hover:bg-main dark:text-lightWhite hover:text-lightWhite cursor-pointer transition-all duration-300 group/swiperslide mb-8 shadow-lg">
                                 <CategoryItem key={item.id} {...item} />
                             </SwiperSlide>
                         ))
                     }
                 </Swiper>
-                <div ref={LeftarrowBTN} className='absolute top-1/4 translate-y-1 md:translate-y-2 lg:translate-y-3 left-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115 bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full p-2 flex place-items-center transition-all duration-500 cursor-pointer'>
+                <div ref={LeftarrowBTN} className='absolute top-1/4 translate-y-1 md:translate-y-2 lg:translate-y-3 left-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115 xl:pt-[7.5px] bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full px-[8px] py-[7px] flex place-items-center transition-all duration-500 cursor-pointer'>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
-                <div ref={RightarrowBTN} className='absolute top-1/4 translate-y-1 md:translate-y-2 lg:translate-y-3 right-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115 bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full p-2 flex place-items-center transition-all duration-500 cursor-pointer'>
+                <div ref={RightarrowBTN} className='absolute top-1/4 translate-y-1 md:translate-y-2 lg:translate-y-3 right-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115   xl:pt-[7.5px] bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full px-[8px] py-[7px] flex place-items-center transition-all duration-500 cursor-pointer'>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </div>
             </div>
