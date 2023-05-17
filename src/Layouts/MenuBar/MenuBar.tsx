@@ -1,37 +1,41 @@
 import React, { Dispatch } from "react"
-import logo from '../../Assets/logo-light-horizontal.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import SearchInput from "../../components/SearchInput/SearchInput"
 import { NavbarItems } from "../Navbar/Navbar"
 import MenuBarItem from "../../components/MenuBarItem/MenuBarItem"
 import ThemeChangerBtn from "../../components/ThemeChangerBtn/ThemeChangerBtn"
+import Logo from "../../components/Logo/Logo";
 
 
 const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Dispatch<React.SetStateAction<boolean>> }) => {
     return (
         <React.Fragment>
-            <div className={`Menubar fixed z-20 top-0 w-[300px] h-screen p-5 bg-lightWhite dark:bg-darkFourthBlack lg:hidden duration-300 ${active ? 'right-0' : '-right-full'}`}>
-                <div className="flex justify-between items-center mb-5">
-                    <div className="logo  w-[140px] h-[52px] bg-no-repeat bg-cover ">
-                        <img src={logo} alt="logo" className="w-full h-full duration-500 cursor-pointer hover:scale-110" />
+            <div className={`Menubar fixed z-20 top-0 w-[280px] 2xs:w-[300px] h-screen p-5 bg-lightWhite dark:bg-darkFourthBlack lg:hidden duration-300 ${active ? 'right-0' : '-right-full'}`}>
+                <div>
+                    <div className="flex justify-between items-center mb-5">
+                        <Logo />
+                        <div className="btn btn-green h-10 aspect-square flex justify-center items-center"
+                            onClick={() => {
+                                activeHandler(false)
+                            }}>
+                            <FontAwesomeIcon
+                                icon={faClose}
+                                className="text-base"
+                            />
+                        </div>
                     </div>
-                    <div className="btn btn-green h-10 aspect-square flex justify-center items-center"
-                        onClick={() => {
-                            activeHandler(false)
-                        }}>
-                        <FontAwesomeIcon
-                            icon={faClose}
-                            className="text-base"
-                        />
+                    <SearchInput />
+                </div>
+                <div className="max-h-[calc(100%-190px)] overflow-y-auto LTR pr-Inscroll">
+                    <div className="RTL">
+                        {
+                            NavbarItems.map(item => (
+                                <MenuBarItem key={item.id}  {...item} />
+                            ))
+                        }
                     </div>
                 </div>
-                <SearchInput />
-                {
-                    NavbarItems.map(item => (
-                        <MenuBarItem key={item.id}  {...item} />
-                    ))
-                }
                 <div className="flex justify-between items-center">
                     <p>
                         حالت روز / شب

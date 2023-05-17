@@ -1,4 +1,3 @@
-import image from "../../Assets/logo-light-horizontal.png";
 import {
     faBars,
     faBasketShopping,
@@ -9,6 +8,7 @@ import ThemeChangerBtn from "../../components/ThemeChangerBtn/ThemeChangerBtn";
 import Navbar from "../Navbar/Navbar";
 import MenuBar from "../MenuBar/MenuBar";
 import { useState } from "react";
+import Logo from "../../components/Logo/Logo";
 const Header = () => {
 
     const [showMenuBar, setShowMenuBar] = useState(false)
@@ -25,9 +25,7 @@ const Header = () => {
                     />
                 </div>
                 <div className="right-section flex gap-16 items-center">
-                    <div className="logo  w-[140px] h-[52px] bg-no-repeat bg-cover ">
-                        <img src={image} alt="logo" className="w-full h-full duration-500 cursor-pointer hover:scale-110" />
-                    </div>
+                    <Logo />
                     <div className="hidden lg:block">
                         <Navbar />
                     </div>
