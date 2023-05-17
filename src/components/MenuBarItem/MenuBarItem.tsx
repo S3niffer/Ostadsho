@@ -6,8 +6,13 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 
 const MenuBarItem = (item: TnavbarItem) => {
     return (
-        <div className="my-5 pb-4 overflow-hidden border border-transparent text-ThirdGray border-b-gray-200 dark:text-lightWhite">
-            <input type="checkbox" className="absolute -z-10 opacity-0" id={item.title} onBlur={(e) => e.target.checked = false} />
+        <div className="my-5 pb-4 overflow-hidden border border-transparent border-b-gray-200 text-ThirdGray  dark:text-lightWhite">
+            <input
+                type="checkbox"
+                className="absolute z-10 w-[250px] opacity-0 cursor-pointer h-7 translate-y-2"
+                id={item.title}
+                onBlur={(e) => e.target.checked = false}
+            />
             <div className="icon-container flex justify-between items-center text-base font-semibold ">
                 <label htmlFor={item.title}>
                     <div className="cursor-pointer">{item.title}</div>
