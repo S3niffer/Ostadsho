@@ -9,12 +9,12 @@ import Navbar from "../Navbar/Navbar";
 import MenuBar from "../MenuBar/MenuBar";
 import { useState } from "react";
 import Logo from "../../components/Logo/Logo";
-const Header = () => {
+const Header = ({ shadow }: { shadow?: true }) => {
 
     const [showMenuBar, setShowMenuBar] = useState(false)
 
     return (
-        <div className="Header px-4 py-8 bg-lightWhite shadow-lg mb-8 dark:bg-darkFourthBlack">
+        <div className={`Header p-4 md:py-6 bg-lightWhite ${shadow ? 'shadow-lg' : ''} dark:bg-darkFourthBlack`}>
             <div className="container flex justify-between items-center flex-wrap">
                 <div
                     onClick={() => setShowMenuBar(true)}
