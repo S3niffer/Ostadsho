@@ -1,7 +1,7 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const SearchInput = ({ className }: { className: string }) => {
+const SearchInput = ({ className }: { className?: string }) => {
     return (
         <div className="p-3 bg-lightFourthWhite dark:bg-darkBlack rounded-xl flex items-center gap-2">
             <FontAwesomeIcon
