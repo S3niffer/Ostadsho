@@ -101,9 +101,13 @@ input:checked ~ .icon-container svg {
     border-radius: 10px;
 }
 
-* {
-    scrollbar-width: 8px;
+.BreadCrumb {
+    background-image: url("Assets/BreadCrumb_BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 @font-face {
     font-family: "yekaBakh";
     src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
