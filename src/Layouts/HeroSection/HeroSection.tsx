@@ -5,7 +5,7 @@ const HeroSection = () => {
 
 
     return (
-        <div className="HeroSection container mx-auto flex justify-between items-center flex-col md:flex-row lg:flex-row-reverse pb-12">
+        <div className="HeroSection mt-5 bml:mt-8 container mx-auto flex justify-between items-center flex-col md:flex-row lg:flex-row-reverse pb-12">
             <div className="" >
                 <Lottie animationData={HeroSEctionSvg} className="mx-auto w-full -translate-y-12 2xs:-translate-y-5 md:w-[350px] lg:w-[470px] xl:w-[580px]" />
             </div>
