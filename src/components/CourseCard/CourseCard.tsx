@@ -1,13 +1,4 @@
 
-export type CourseCardT = {
-    id: number;
-    title: string;
-    price: number;
-    BeforeDiscount?: number;
-    imageSrc: string;
-    hrefLink: string
-}
-
 const CourseCard = ({ id, hrefLink, imageSrc, price, title, BeforeDiscount }: CourseCardT) => {
     return (
         <div className="courseCard relative pt-4 px-2 md:px-0">

@@ -1,4 +1,4 @@
-import NavbarItem, { TnavbarItem } from "../../components/NavbarItem/NavbarItem";
+import NavbarItem from "../../components/NavbarItem/NavbarItem";
 
 export const NavbarItems: TnavbarItem[] = [
     {

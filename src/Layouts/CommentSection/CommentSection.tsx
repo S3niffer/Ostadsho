@@ -7,12 +7,6 @@ import avatr1 from '../../Assets/avatars/male1084675750580.jpg'
 import avatr2 from '../../Assets/avatars/female20161025239720032.jpg'
 import CommentItem from "../../components/CommentItem/CommentItem";
 
-export type commentT = {
-    id: number,
-    name: string,
-    imgSrc: string,
-    comment: string
-}
 
 const Comments: commentT[] = [
     {

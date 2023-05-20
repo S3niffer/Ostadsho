@@ -1,5 +1,4 @@
 import FooterUlIcon from "../FooterUlIcon/FooterUlIcon"
-import { TnavbarItem } from "../NavbarItem/NavbarItem"
 
 const FooterUl = ({ title, submenu, ulColsThree }: TnavbarItem & { ulColsThree?: true }) => {
     return (

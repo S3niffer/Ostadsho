@@ -1,5 +1,3 @@
-import { commentT } from "../../Layouts/CommentSection/CommentSection"
-
 const CommentItem = (props: commentT) => {
     return (
         <div className="bg-lightWhite dark:bg-darkFourthBlack p-4 pt-2 ps-14 xl:ps-16 border dark:border-darkThirdBlack relative">

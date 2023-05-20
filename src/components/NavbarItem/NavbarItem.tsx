@@ -1,9 +1,7 @@
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type Tnavbar = { id: number, title: string, link: string, ulColsThree?: true }
-type TSubmenuItem = TnavbarItem[]
-export type TnavbarItem = Tnavbar & { submenu?: TSubmenuItem }
+
 
 
 const NavbarItem = (item: TnavbarItem) => {

@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import { useRef } from "react";
 import { faJsSquare } from "@fortawesome/free-brands-svg-icons";
-import CategoryItem, { CategoryItemProps } from "../../components/CategoryItem/CategoryItem";
+import CategoryItem from "../../components/CategoryItem/CategoryItem";
 
 const CategoryItems: CategoryItemProps[] = [
     { id: 0, title: 'JS', icon: faJsSquare, courseCount: 34 },

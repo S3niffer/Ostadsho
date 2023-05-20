@@ -1,5 +1,5 @@
 import imageCourse from '../../Assets/Courses/Com_node.png'
-import CourseCard, { CourseCardT } from '../../components/CourseCard/CourseCard'
+import CourseCard from '../../components/CourseCard/CourseCard'
 
 const Courses: CourseCardT[] = [
     { hrefLink: '', id: 0, imageSrc: imageCourse, price: 356000, title: "آموزش Api نویسی با Nodejs" },

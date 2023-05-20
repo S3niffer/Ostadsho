@@ -9,6 +9,9 @@ import Navbar from "../Navbar/Navbar";
 import MenuBar from "../MenuBar/MenuBar";
 import { useState } from "react";
 import Logo from "../../components/Logo/Logo";
+
+
+
 const Header = ({ shadow }: { shadow?: true }) => {
 
     const [showMenuBar, setShowMenuBar] = useState(false)

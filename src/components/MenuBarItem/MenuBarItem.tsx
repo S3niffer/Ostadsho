@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { TnavbarItem } from "../NavbarItem/NavbarItem"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 
 
