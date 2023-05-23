@@ -30,13 +30,14 @@ const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Di
                 <div className="max-h-[calc(100%-190px)] overflow-y-auto LTR pr-Inscroll">
                     <div className="RTL">
                         {
-                            NavbarItems.map(item => (
-                                <MenuBarItem key={item.id}  {...item} />
-                            ))
+                            NavbarItems.map((item, index) => {
+                                if (NavbarItems.length === ++index) return <MenuBarItem key={item.id} lasindex {...item} />
+                                return <MenuBarItem key={item.id} {...item} />
+                            })
                         }
                     </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center border border-transparent border-t-gray-200 pt-2">
                     <p>
                         حالت روز / شب
                     </p>
