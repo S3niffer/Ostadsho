@@ -13,7 +13,7 @@ const BreadCrumb = () => {
                     </div>
                 </div>
                 <div className="flex-grow-[0.22] xl:text-lg">
-                    <SearchInput className='focus:text-Gray placeholder:focus:text-Gray dark:focus:text-SecondaryGray dark:placeholder:focus:text-SecondaryGray' />
+                    <SearchInput />
                 </div>
             </div>
         </div>

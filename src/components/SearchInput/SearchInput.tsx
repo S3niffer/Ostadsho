@@ -1,14 +1,27 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useState } from "react"
 
-const SearchInput = ({ className }: { className?: string }) => {
+const SearchInput = () => {
+
+    const [isInputFocoused, SetisInputFocoused] = useState(false)
+
+    const statusChanger = () => {
+        SetisInputFocoused(prv => !prv)
+    }
     return (
-        <div className="p-3 bg-lightFourthWhite dark:bg-darkBlack rounded-xl flex items-center gap-2">
+        <div className="p-3 bg-lightFourthWhite group dark:bg-darkBlack rounded-xl flex items-center gap-2">
             <FontAwesomeIcon
                 icon={faSearch}
-                className="text-lg text-ThirdGray pt-1 cursor-pointer"
+                className={`text-lg cursor-pointer ${isInputFocoused ? 'text-Gray dark:text-SecondaryGray' : 'text-SecondaryGray dark:text-Gray'}`}
             />
-            <input type="text" className={`bg-transparent text-dark w-full dark:text-SecondaryGray outline-none ${className}`} placeholder="جستوجو..." />
+            <input
+                type="text"
+                onFocus={statusChanger}
+                onBlur={statusChanger}
+                className="bg-transparent text-dark w-full dark:text-SecondaryGray outline-none focus:text-Gray placeholder:focus:text-Gray dark:focus:text-SecondaryGray dark:placeholder:focus:text-SecondaryGray"
+                placeholder="جستوجو..."
+            />
         </div>
     )
 }
