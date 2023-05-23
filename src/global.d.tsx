@@ -7,7 +7,7 @@ declare global {
 
     type Tnavbar = { id: number, title: string, link: string, ulColsThree?: true }
     type TSubmenuItem = TnavbarItem[]
-    type TnavbarItem = Tnavbar & { submenu?: TSubmenuItem }
+    type TnavbarItem = Tnavbar & { submenu?: TSubmenuItem } & { lasindex?: true }
 
     type CategoryItemProps = {
         id: number;

@@ -5,7 +5,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 
 const MenuBarItem = (item: TnavbarItem) => {
     return (
-        <div className="my-5 pb-4 overflow-hidden border border-transparent border-b-gray-200 text-ThirdGray  dark:text-lightWhite">
+        <div className={`pb-4 overflow-hidden text-ThirdGray  dark:text-lightWhite ${item.lasindex ? 'mt-5' : 'my-5 border border-transparent border-b-gray-200'}`}>
             <input
                 type="checkbox"
                 className="absolute z-10 w-[250px] opacity-0 cursor-pointer h-7 translate-y-2"
