@@ -3,38 +3,71 @@ import { store } from "./App/Store";
 
 declare global {
 
-    type Theme = "DARK" | "LIGHT"
+    type T_Theme = "DARK" | "LIGHT"
 
-    type Tnavbar = { id: number, title: string, link: string, ulColsThree?: true }
-    type TSubmenuItem = TnavbarItem[]
-    type TnavbarItem = Tnavbar & { submenu?: TSubmenuItem } & { lasindex?: true }
-
-    type CategoryItemProps = {
+    interface T_NavbarItem {
         id: number;
-        icon: IconDefinition;
         title: string;
-        courseCount: number
+        twoColumn?: true;
+        submenu?: T_NavbarSubmenu[];
+        lasindex?: true;
+    }
+    type T_NavbarSubmenu = (T_NavbarItem & { link: string }) | T_CategoryItem;
+
+    interface T_CategoryItem {
+        id: number;
+        title: string;
+        icon: IconDefinition;
+        categoryName: string;
+        courses: T_Course[]
     }
 
-    type CourseCardT = {
+    interface T_Course {
         id: number;
         title: string;
         price: number;
-        BeforeDiscount?: number;
         imageSrc: string;
-        hrefLink: string
+        courseName: string;
+        chapter?: T_chapter[];
+        comment?: T_Comment[];
+        discountPercent?: number;
+        instructor?: T_Instructor;
     }
 
-    type commentT = {
-        id: number,
-        name: string,
-        imgSrc: string,
-        comment: string
+    interface T_chapter {
+        id: number;
+        name: string;
+        duration: number;
+        episodes: T_Episode[]
     }
 
-    type contactInfo = {
-        id: number,
-        icon: IconDefinition,
+    interface T_Episode {
+        id: number;
+        title: string;
+        duration: number;
+        link: string
+    }
+
+    interface T_Comment {
+        id: number;
+        name: string;
+        imgSrc: string;
+        comment: string;
+        time?: Date
+    }
+
+    interface T_Instructor {
+        id: number;
+        name: string;
+        age: number;
+        profession: string;
+        avatarSrc: string;
+        desc: string
+    }
+
+    interface T_ContactInfo {
+        id: number;
+        icon: IconDefinition;
         info: string
     }
 
@@ -42,4 +75,4 @@ declare global {
     type RootState = ReturnType<typeof store.getState>
 }
 
-export { };
+// export { };
