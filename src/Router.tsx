@@ -1,17 +1,13 @@
-import { useRoutes } from 'react-router-dom'
-import Home from './Pages/Home/Home'
-import Categories from './Pages/Categories/Categories'
+import { RouteObject, useRoutes } from "react-router-dom"
+import Home from "./Pages/Home/Home"
+import Categories from "./Pages/Categories/Categories"
+import Course from "./Pages/Course/Course"
 
-const InitRoutes = [
-    { path: '/', element: <Home /> },
-    { path: '/Categories/:Category_Name', element: <Categories /> },
+const InitRoutes: RouteObject[] = [
+    { path: "/", element: <Home /> },
+    { path: "/Categories/:Category_Name", element: <Categories /> },
+    { path: "/:Category_Name/:Course_Name", element: <Course /> },
 ]
-
-
-
-
-
-
 
 const Router = () => useRoutes(InitRoutes)
 
