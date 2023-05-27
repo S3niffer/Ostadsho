@@ -143,6 +143,22 @@ input:checked ~ .icon-container svg {
 .track-2 {
     background-color: rgba(82, 172, 102, 0.4);
 }
+
+.shopPageButton {
+    animation: bombing infinite ease-in-out 0.5s;
+}
+.shopPageButton:hover {
+    animation: none;
+}
+@keyframes bombing {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(1.03);
+    }
+}
+
 @font-face {
     font-family: "yekaBakh";
     src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
