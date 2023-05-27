@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react"
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import SearchInput from "../../components/SearchInput/SearchInput"
@@ -6,9 +6,14 @@ import { NavbarItems } from "../Navbar/Navbar"
 import MenuBarItem from "../../components/MenuBarItem/MenuBarItem"
 import ThemeChangerBtn from "../../components/ThemeChangerBtn/ThemeChangerBtn"
 import Logo from "../../components/Logo/Logo";
+import { useDispatch } from "react-redux"
+import { makeMenubarHidden } from "../../App/Slices/MenubarVisibility"
 
 
-const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Dispatch<React.SetStateAction<boolean>> }) => {
+const MenuBar = ({ active }: { active: boolean }) => {
+
+    const Dispatch = useDispatch()
+
     return (
         <React.Fragment>
             <div className={`Menubar fixed z-20 top-0 w-[280px] 2xs:w-[300px] h-screen p-5 bg-lightWhite dark:bg-darkFourthBlack lg:hidden duration-300 ${active ? 'right-0' : '-right-full'}`}>
@@ -17,7 +22,7 @@ const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Di
                         <Logo />
                         <div className="btn btn-green h-10 aspect-square flex justify-center items-center"
                             onClick={() => {
-                                activeHandler(false)
+                                Dispatch(makeMenubarHidden())
                             }}>
                             <FontAwesomeIcon
                                 icon={faClose}
@@ -31,8 +36,7 @@ const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Di
                     <div className="RTL">
                         {
                             NavbarItems.map((item, index) => {
-                                if (NavbarItems.length === ++index) return <MenuBarItem key={item.id} lasindex {...item} />
-                                return <MenuBarItem key={item.id} {...item} />
+                                return <MenuBarItem key={item.id} {...item} lasindex={NavbarItems.length === ++index ? true : undefined} />
                             })
                         }
                     </div>
@@ -45,7 +49,7 @@ const MenuBar = ({ active, activeHandler }: { active: boolean, activeHandler: Di
                 </div>
             </div>
             <div onClick={() => {
-                activeHandler(false)
+                Dispatch(makeMenubarHidden())
             }} className={`overlay fixed top-0 left-0 bg-black/80 w-screen h-screen lg:hidden duration-200 ${active ? 'z-10 opacity-100' : '-z-10 opacity-0'}`}></div>
         </React.Fragment>
     )
