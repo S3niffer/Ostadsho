@@ -1,11 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState: {
     status: boolean
 } = {
-    status: false
+    status: false,
 }
-
 
 const MenubarVisibility = createSlice({
     name: "MenubarVisibility",
@@ -16,10 +15,12 @@ const MenubarVisibility = createSlice({
         },
         makeMenubarHidden: (state) => {
             state.status = false
-        }
-    }
+        },
+    },
 })
 
-export const getMenubarVisibilityStatus = (state: RootState) => state.MenubarVisibility.status
-export const { makeMenubarVisible, makeMenubarHidden } = MenubarVisibility.actions
+export const getMenubarVisibilityStatus = (state: RootState) =>
+    state.MenubarVisibility.status
+export const { makeMenubarVisible, makeMenubarHidden } =
+    MenubarVisibility.actions
 export default MenubarVisibility.reducer

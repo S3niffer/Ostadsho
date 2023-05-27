@@ -2,11 +2,11 @@ import { faJsSquare } from "@fortawesome/free-brands-svg-icons"
 import {
     faBrain,
     faDesktop,
-    faMobile,
+    faMobileAndroidAlt,
     faNetworkWired,
     faS,
 } from "@fortawesome/free-solid-svg-icons"
-import { createSlice } from "@reduxjs/toolkit"
+import { createSelector, createSlice } from "@reduxjs/toolkit"
 
 // import images
 import HTML from "../../Assets/Courses/HTML.png"
@@ -130,7 +130,7 @@ const initialState: T_CategoryItem[] = [
         id: 3,
         categoryName: "mobile-programming",
         title: "موبایل",
-        icon: faMobile,
+        icon: faMobileAndroidAlt,
         courses: [
             {
                 id: 0,
@@ -225,30 +225,44 @@ const initialState: T_CategoryItem[] = [
     },
 ]
 
-const categories = createSlice({
+export const categories = createSlice({
     name: "categories",
     initialState,
     reducers: {},
 })
 
-export const getAllCategories = (state: RootState) => state.categories
-export const getAllCourses = (state: RootState) => {
+// help to get the catories from store in useSelector
+export const getCategories = (state: RootState) => state.Categories
+
+// find and get all courses like this getCourses(RootState) * result only changes when the categories updated(getCategories returns new value)
+export const getCourses = createSelector([getCategories], (categories) => {
     let All_Courses: T_Course[] = []
-    state.categories.forEach((category) => {
+    categories.forEach((category) => {
         category.courses.forEach((course) => {
             All_Courses.push(course)
         })
     })
     return All_Courses.sort(() => 0.5 - Math.random()).slice(0, 8)
-}
-export const getCategory = (state: RootState, categoryName: string) =>
-    state.categories.find((category) => category.categoryName === categoryName)
-export const getCourse = (
-    state: RootState,
-    categoryName: string,
-    courseName: string
-) =>
-    getCategory(state, categoryName)?.courses.find(
-        (course) => course.courseName === courseName
-    )
+})
+
+// get one specific catgory like this getCategory(RootState,categoryName) *result changed when getCategories returns new value or request new categoryName
+export const getCategory = createSelector(
+    [
+        getCategories,
+        (RootState: RootState, categoryName: string) => categoryName,
+    ],
+    (categories, categoryName) =>
+        categories.find((category) => category.categoryName === categoryName)
+)
+
+// get specific Course like this getCourse(RootState,categoryName,courseName) *result changed when getCategory returns new value or request new courseName
+export const getCourse = createSelector(
+    [
+        getCategory,
+        (RootState: RootState, categoryName: string, courseName: string) =>
+            courseName,
+    ],
+    (categoryName, courseName) =>
+        categoryName?.courses.find((course) => course.courseName === courseName)
+)
 export default categories.reducer

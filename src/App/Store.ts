@@ -1,14 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit"
-import categories from "./Slices/Courses"
-import theme from "./Slices/Theme"
+import Categories from "./Slices/Courses"
+import Theme from "./Slices/Theme"
 import MenubarVisibility from "./Slices/MenubarVisibility"
 import OstadShoComments from "./Slices/OstadshoComment"
+import NavbaItems from "./Slices/Navbar"
+import ContactInfo from "./Slices/ContactInfo"
 
 export const store = configureStore({
     reducer: {
-        theme,
-        categories,
+        Theme,
+        Categories,
         MenubarVisibility,
         OstadShoComments,
+        NavbaItems,
+        ContactInfo,
     },
 })
