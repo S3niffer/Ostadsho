@@ -1,17 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, HashRouter } from 'react-router-dom'
-import App from './App'
-import './index.css'
-import { Provider } from 'react-redux'
-import { store } from './App/Store'
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { BrowserRouter, HashRouter } from "react-router-dom"
+import App from "./App"
+import "./index.css"
+import { Provider } from "react-redux"
+import { store } from "./App/Store"
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <Provider store={store}>
-            <BrowserRouter >
+            <BrowserRouter>
                 <App />
             </BrowserRouter>
         </Provider>
-    </React.StrictMode>,
+    </React.StrictMode>
 )
