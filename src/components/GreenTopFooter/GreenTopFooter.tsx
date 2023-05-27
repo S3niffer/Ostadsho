@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { contactInfos } from "../../Layouts/Footer/Footer"
+import { useSelector } from "react-redux"
+import { getContactInfos } from "../../App/Slices/ContactInfo"
 
 const GreenTopFooter = () => {
+    const ContactInfos = useSelector(getContactInfos)
     return (
         <div className="mt-12 text-lightWhite">
             <svg
@@ -47,16 +49,17 @@ const GreenTopFooter = () => {
                         </span>
                     </p>
                     <div className="flex gap-2 flex-col md:flex-row xs:gap-4 justify-end items-center">
-                        {
-                            contactInfos.map(info => (
-                                <div key={info.id} className="flex gap-2 items-center">
-                                    <p className="text-xs pt-1.5 md:text-sm lg:text-base">
-                                        {info.info}
-                                    </p>
-                                    <FontAwesomeIcon icon={info.icon} />
-                                </div>
-                            ))
-                        }
+                        {ContactInfos.map((info) => (
+                            <div
+                                key={info.id}
+                                className="flex gap-2 items-center"
+                            >
+                                <p className="text-xs pt-1.5 md:text-sm lg:text-base">
+                                    {info.info}
+                                </p>
+                                <FontAwesomeIcon icon={info.icon} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
