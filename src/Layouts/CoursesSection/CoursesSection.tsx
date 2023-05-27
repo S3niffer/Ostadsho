@@ -1,18 +1,12 @@
-import imageCourse from '../../Assets/Courses/Com_node.png'
-import CourseCard from '../../components/CourseCard/CourseCard'
-
-const Courses: CourseCardT[] = [
-    { hrefLink: '', id: 0, imageSrc: imageCourse, price: 356000, title: "آموزش Api نویسی با Nodejs" },
-    { hrefLink: '', id: 1, imageSrc: imageCourse, price: 356000, title: "آموزش Api نویسی با Nodejs" },
-    { hrefLink: '', id: 2, imageSrc: imageCourse, price: 286000, title: "آموزش Api نویسی با Nodejs" },
-    { hrefLink: '', id: 3, imageSrc: imageCourse, price: 356000, title: "آموزش Api نویسی با Nodejs", BeforeDiscount: 380000 },
-    { hrefLink: '', id: 4, imageSrc: imageCourse, price: 0, title: "آموزش Api نویسی با Nodejs" },
-]
+import { Link } from "react-router-dom"
+import CourseCard from "../../components/CourseCard/CourseCard"
+import { useSelector } from "react-redux"
+import { getAllCourses } from "../../App/Slices/Courses"
 
 const CoursesSection = () => {
+    const Courses = useSelector(getAllCourses)
     return (
         <div className="CoursesSection container">
-
             <div className="title gap-2 flex flex-col md:flex-row justify-between items-center">
                 <div className="flex flex-col gap-3 md:flex-row items-center">
                     <svg
@@ -33,44 +27,49 @@ const CoursesSection = () => {
                         </g>
                     </svg>
                     <div className="text-center md:text-right">
-                        <p className="font-yekaBakhBold md:text-lg bml:text-xl lg:text-2xl">جـدیدترین دوره هـــای آمـــوزشـــــــی</p>
-                        <span className="font-yekaBakhLight text-ThirdGray dark:text-lightSecondaryWhite tracking-[1.5px] text-xs md:text-sm bml:text-base lg:text-lg uppercase">the latest training courses</span>
+                        <p className="font-yekaBakhBold md:text-lg bml:text-xl lg:text-2xl">
+                            جـدیدترین دوره هـــای آمـــوزشـــــــی
+                        </p>
+                        <span className="font-yekaBakhLight text-ThirdGray dark:text-lightSecondaryWhite tracking-[1.5px] text-xs md:text-sm bml:text-base lg:text-lg uppercase">
+                            the latest training courses
+                        </span>
                     </div>
                 </div>
-                <div className="text-center relative bg-ThirdGray text-lightWhite rounded-md w-2/3 md:w-[150px] py-1.5 cursor-pointer text-xs 2xs:text-sm flex items-center justify-between md:justify-center md:gap-2 md:py-2.5 bml:text-base lg:text-lg lg:w-[200px] lg:py-3 hover:bg-Gray transition-all duration-300">
-                    <div className="md:hidden"></div>
-                    <span>
-                        مشاهده بیشتر
-                    </span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="none"
-                        viewBox="0 0 81 70"
-                        className=""
-                    >
-                        <path
-                            className="fill-lightWhite group-hover:fill-main"
-                            fillRule="evenodd"
-                            d="M18.732 33.232a2.5 2.5 0 000 3.536L32.066 50.1a2.5 2.5 0 103.535-3.535L26.535 37.5H60.5a2.5 2.5 0 000-5H26.535l9.066-9.066a2.5 2.5 0 00-3.535-3.535L18.732 33.232z"
-                            clipRule="evenodd"
-                            opacity="0.4"
-                        ></path>
-                        <path
-                            className="fill-lightWhite group-hover:fill-main"
-                            d="M18.732 36.768a2.5 2.5 0 010-3.536L32.066 19.9a2.5 2.5 0 013.535 3.536l-11.67 11.557L35.6 46.566a2.5 2.5 0 01-3.535 3.535L18.732 36.768z"
-                        ></path>
-                    </svg>
-                </div>
+                <Link
+                    to={"/Categories/All"}
+                    className="w-2/3 md:w-[150px] lg:w-[200px]"
+                >
+                    <div className="text-center relative bg-ThirdGray text-lightWhite rounded-md  py-1.5 cursor-pointer text-xs 2xs:text-sm flex items-center justify-between md:justify-center md:gap-2 md:py-2.5 bml:text-base lg:text-lg  lg:py-3 hover:bg-Gray transition-all duration-300">
+                        <div className="md:hidden"></div>
+                        <span>مشاهده بیشتر</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            viewBox="0 0 81 70"
+                            className=""
+                        >
+                            <path
+                                className="fill-lightWhite group-hover:fill-main"
+                                fillRule="evenodd"
+                                d="M18.732 33.232a2.5 2.5 0 000 3.536L32.066 50.1a2.5 2.5 0 103.535-3.535L26.535 37.5H60.5a2.5 2.5 0 000-5H26.535l9.066-9.066a2.5 2.5 0 00-3.535-3.535L18.732 33.232z"
+                                clipRule="evenodd"
+                                opacity="0.4"
+                            ></path>
+                            <path
+                                className="fill-lightWhite group-hover:fill-main"
+                                d="M18.732 36.768a2.5 2.5 0 010-3.536L32.066 19.9a2.5 2.5 0 013.535 3.536l-11.67 11.557L35.6 46.566a2.5 2.5 0 01-3.535 3.535L18.732 36.768z"
+                            ></path>
+                        </svg>
+                    </div>
+                </Link>
             </div>
 
             <div className="CoursesSection course-conatiner grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-14 gap-x-4 py-16">
-                {
-                    Courses.map(course => (
-                        <CourseCard key={course.id} {...course} />
-                    ))
-                }
+                {Courses.map((course, index) => (
+                    <CourseCard key={index} {...course} />
+                ))}
             </div>
         </div>
     )

@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "react-router-dom"
 
 
 
-const MenuBarItem = (item: TnavbarItem) => {
+const MenuBarItem = (item: T_NavbarItem) => {
     return (
         <div className={`pb-4 overflow-hidden text-ThirdGray  dark:text-lightWhite ${item.lasindex ? 'mt-5' : 'my-5 border border-transparent border-b-gray-200'}`}>
             <input
@@ -31,7 +32,11 @@ const MenuBarItem = (item: TnavbarItem) => {
                         <ul className=" flex flex-col gap-1 pt-4">
                             {
                                 item.submenu.map(subItem => (
-                                    <li key={subItem.id} className="cursor-pointer bg-lightSecondaryWhite dark:bg-darkThirdBlack dark:hover:bg-light_green hover:bg-light_green hover:text-main text-sm pr-4 rounded-lg py-2">{subItem.title}</li>
+                                    // @ts-expect-error
+                                    <Link key={subItem.id} to={subItem.link ? subItem.link : `/Categories/${subItem.categoryName}`}>
+                                        <li className="cursor-pointer bg-lightSecondaryWhite dark:bg-darkThirdBlack dark:hover:bg-light_green hover:bg-light_green hover:text-main text-sm pr-4 rounded-lg py-2">{subItem.title}</li>
+                                    </Link >
+
                                 ))
                             }
                         </ul>

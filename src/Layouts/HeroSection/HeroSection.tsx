@@ -1,5 +1,6 @@
 import Lottie from "lottie-react"
 import HeroSEctionSvg from '../../Assets/SVGHeroSectionAnamation.json'
+import { Link } from "react-router-dom"
 
 const HeroSection = () => {
 
@@ -18,9 +19,9 @@ const HeroSection = () => {
                 </span>
                 <div className="flex gap-2 flex-col  md:flex-row font-yekaBakhBold">
                     <div className="btn btn-green group flex items-center justify-between bg-main text-lightWhite hover:bg-light_green hover:text-main relative md:pe-7 md:pr-4 md:text-sm bml:text-base bml:px-12 lg:py-5 lg:pe-10 lg:pr-8 lg:text-lg ">
-                        <span className="mx-auto">
+                        <Link to='/categories/All' className="mx-auto">
                             شروع یادگیری برنامه نویسی
-                        </span>
+                        </Link>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -43,7 +44,7 @@ const HeroSection = () => {
                         </svg>
                     </div>
                     <div className="btn btn-green md:px-4 md:text-sm bml:text-base bml:px-12 lg:py-5 lg:px-10 lg:text-lg ">
-                        <span className="block text-center md:flex md:place-items-center">
+                        <span onClick={() => { (document.querySelector('.App') as HTMLDivElement).scrollTo({ top: 5000, behavior: 'smooth' }) }} className="block text-center md:flex md:place-items-center">
                             درباره تیم استادشو
                         </span>
                     </div>
