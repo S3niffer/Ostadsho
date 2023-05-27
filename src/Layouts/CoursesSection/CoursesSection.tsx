@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import CourseCard from "../../components/CourseCard/CourseCard"
 import { useSelector } from "react-redux"
-import { getAllCourses } from "../../App/Slices/Courses"
+import { getCourses } from "../../App/Slices/Courses"
 
 const CoursesSection = () => {
-    const Courses = useSelector(getAllCourses)
+    const Courses = useSelector(getCourses)
     return (
         <div className="CoursesSection container">
             <div className="title gap-2 flex flex-col md:flex-row justify-between items-center">

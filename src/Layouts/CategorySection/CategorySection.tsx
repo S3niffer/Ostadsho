@@ -10,13 +10,13 @@ import { Autoplay, Navigation } from "swiper"
 import { useRef } from "react"
 import CategoryItem from "../../components/CategoryItem/CategoryItem"
 import { useSelector } from "react-redux"
-import { getAllCategories } from "../../App/Slices/Courses"
+import { getCategories } from "../../App/Slices/Courses"
 
 const CategorySection = () => {
     const LeftarrowBTN = useRef<HTMLDivElement>(null)
     const RightarrowBTN = useRef<HTMLDivElement>(null)
 
-    const AllCategories = useSelector(getAllCategories)
+    const AllCategories = useSelector(getCategories)
 
     return (
         <div className="CategorySection container">

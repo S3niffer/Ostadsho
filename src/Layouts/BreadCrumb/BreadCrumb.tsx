@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
-import { getAllCategories } from "../../App/Slices/Courses"
+import { getCategories } from "../../App/Slices/Courses"
 
 const BreadCrumb = () => {
     const [BreadCrumbs, setBreadCrumbs] = useState<T_BreadCrumb[]>([
         { id: 0, title: "خانه", href: "/" },
     ])
     const { pathname } = useLocation()
-    const AllCategories = useSelector(getAllCategories)
+    const AllCategories = useSelector(getCategories)
 
     useEffect(() => {
         if (pathname.toLocaleLowerCase().startsWith("/categories/")) {

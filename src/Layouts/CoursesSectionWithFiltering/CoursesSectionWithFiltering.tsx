@@ -6,11 +6,11 @@ import SortSection from "../SortSection/SortSection"
 import Pagination from "../Pagination/pagination"
 import AdvertisingGIF from "../../Assets/bonrailco-1.gif"
 import { useSelector } from "react-redux"
-import { getAllCategories, getAllCourses } from "../../App/Slices/Courses"
+import { getCategories, getCourses } from "../../App/Slices/Courses"
 
 const CoursesSectionWithFiltering = () => {
-    const Courses = useSelector(getAllCourses)
-    const AllCategories = useSelector(getAllCategories)
+    const Courses = useSelector(getCourses)
+    const AllCategories = useSelector(getCategories)
 
     return (
         <div className="CoursesSectionWithFiltering container px-2 md:px-0">
