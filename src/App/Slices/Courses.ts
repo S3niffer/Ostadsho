@@ -242,7 +242,7 @@ export const getCourses = createSelector([getCategories], (categories) => {
             All_Courses.push(course)
         })
     })
-    return All_Courses.sort(() => 0.5 - Math.random()).slice(0, 8)
+    return All_Courses.sort(() => 0.5 - Math.random())
 })
 
 // get one specific catgory like this getCategory(RootState,categoryName) *result changed when getCategories returns new value or request new categoryName

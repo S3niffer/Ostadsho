@@ -67,7 +67,7 @@ const CoursesSection = () => {
             </div>
 
             <div className="CoursesSection course-conatiner grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-14 gap-x-4 py-16">
-                {Courses.map((course, index) => (
+                {Courses.slice(0, 8).map((course, index) => (
                     <CourseCard key={index} {...course} />
                 ))}
             </div>
