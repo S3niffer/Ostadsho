@@ -9,10 +9,10 @@ declare global {
         id: number
         title: string
         twoColumn?: true
-        submenu?: T_NavbarSubmenu[]
+        submenu: T_NavbarSubmenu[]
         lasindex?: true
     }
-    type T_NavbarSubmenu = (T_NavbarItem & { link: string }) | T_CategoryItem
+    type T_NavbarSubmenu = Omit<T_NavbarItem, "submenu"> & { link: string }
 
     interface T_CategoryItem {
         id: number
@@ -82,6 +82,11 @@ declare global {
         title: string
         children: ReactNode
         sticky?: true
+    }
+
+    interface T_Footer {
+        children: React.ReactNode
+        dynamicDepart?: "E_NAMAD"
     }
 
     // Store _ Redux

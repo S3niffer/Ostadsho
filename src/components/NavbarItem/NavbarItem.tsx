@@ -17,8 +17,7 @@ const NavbarItem = (item: T_NavbarItem) => {
                             <ul className="shadow-xl absolute bg-lightWhite border  border-t-4 border-transparent rounded-2xl border-t-main p-3 w-[200px] -right-3 top-20 opacity-0 -z-[1] duration-300 group-hover:z-10 group-hover:opacity-100 group-hover:visible group-hover:top-5 dark:bg-darkThirdBlack">
 
                                 {item.submenu.map(item => (
-                                    // @ts-expect-error
-                                    <Link key={item.id} to={item.link ? item.link : `/Categories/${item.categoryName}`}>
+                                    <Link key={item.id} to={item.link}>
                                         <li className="p-2 hover:bg-light_green rounded-lg text-Gray hover:text-main dark:text-lightWhite">
                                             {item.title}
                                         </li>
