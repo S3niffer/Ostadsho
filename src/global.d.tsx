@@ -1,5 +1,6 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons"
 import { store } from "./App/Store"
+import { ReactNode } from "react"
 
 declare global {
     type T_Theme = "DARK" | "LIGHT"
@@ -75,6 +76,12 @@ declare global {
         id: number
         title: string
         href: string
+    }
+
+    interface T_SideBarBox {
+        title: string
+        children: ReactNode
+        sticky?: true
     }
 
     // Store _ Redux

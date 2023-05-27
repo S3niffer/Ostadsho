@@ -1,15 +1,15 @@
-import { ReactNode } from "react"
-
-const SideBarBox = ({ children, title }: { title: string, children: ReactNode }) => {
+const SideBarBox = ({ children, title, sticky }: T_SideBarBox) => {
     return (
-        <div className="SideBarBox courseCardShadow rounded-md">
-            <div className="bg-lightFourthWhite dark:bg-[#26282a] dark:border-darkThirdBlack border border-SecondaryGray/40 rounded-t-md p-1.5 pr-3.5">
+        <div
+            className={`SideBarBox courseCardShadow rounded-lg ${
+                sticky ? "sticky top-6" : undefined
+            }`}
+        >
+            <div className="bg-lightFourthWhite dark:bg-[#26282a] dark:border-darkThirdBlack border border-SecondaryGray/40 rounded-t-md p-2 pr-3.5 font-bold">
                 {title}
             </div>
-            <div className="pt-2.5 dark:bg-darkFourthBlack">
-                {
-                    children
-                }
+            <div className=" dark:bg-darkFourthBlack border-transparent">
+                {children}
             </div>
         </div>
     )
