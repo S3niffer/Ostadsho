@@ -89,6 +89,29 @@ declare global {
         dynamicDepart?: "E_NAMAD"
     }
 
+    interface T_PriceRange {
+        min: string
+        max: string
+    }
+
+    interface T_PriceFillter {
+        _FillterPriceHandler: React.Dispatch<React.SetStateAction<T_PriceRange>>
+        highestPrice: number
+    }
+
+    type T_SortOption = "Cheap" | "Expensive" | undefined
+
+    interface T_SliceCourseOption {
+        lastIndex: number
+        coursePerPage: number
+    }
+
+    interface T_PaginationProps {
+        setSliceCourseOption: React.Dispatch<React.SetStateAction<T_SliceCourseOption>>
+        FilteredCourses: T_Course[]
+        priceRange: T_PriceRange
+    }
+
     // Store _ Redux
     type RootState = ReturnType<typeof store.getState>
 }
