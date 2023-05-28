@@ -3,9 +3,10 @@ import Home from "./Pages/Home/Home"
 import Categories from "./Pages/Categories/Categories"
 import Course from "./Pages/Course/Course"
 
+
 const InitRoutes: RouteObject[] = [
     { path: "/", element: <Home /> },
-    { path: "/Categories/:Category_Name", element: <Categories /> },
+    { path: "/Categories/:Category_Name/:PageNumber?", element: <Categories /> },
     { path: "/:Category_Name/:Course_Name", element: <Course /> },
 ]
 
