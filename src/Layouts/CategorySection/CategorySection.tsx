@@ -1,8 +1,4 @@
-import {
-    faArrowLeft,
-    faArrowRight,
-    faGraduationCap,
-} from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faArrowRight, faGraduationCap } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "swiper/css"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -19,32 +15,28 @@ const CategorySection = () => {
     const AllCategories = useSelector(getCategories)
 
     return (
-        <div className="CategorySection container">
-            <div className="text-center mb-1 text-sm">
-                <span className="CategorySection-introduction font-RokhFaNumLight bml:text-lg lg:text-xl dark:text-lightSecondaryWhite relative">
+        <div className='CategorySection container'>
+            <div className='mb-1 text-center text-sm'>
+                <span className='CategorySection-introduction relative font-RokhFaNumLight dark:text-lightSecondaryWhite bml:text-lg lg:text-xl'>
                     - دسته بندی دوره های آموزشـی -
-                    <div className="absolute -top-[20%] -left-[10%] opacity-20 -rotate-12 scale-150">
-                        <FontAwesomeIcon
-                            icon={faGraduationCap}
-                        ></FontAwesomeIcon>
+                    <div className='absolute -left-[10%] -top-[20%] -rotate-12 scale-150 opacity-20'>
+                        <FontAwesomeIcon icon={faGraduationCap}></FontAwesomeIcon>
                     </div>
-                    <div className="absolute top-[20%] -right-[10%] opacity-20 rotate-12 scale-150">
-                        <FontAwesomeIcon
-                            icon={faGraduationCap}
-                        ></FontAwesomeIcon>
+                    <div className='absolute -right-[10%] top-[20%] rotate-12 scale-150 opacity-20'>
+                        <FontAwesomeIcon icon={faGraduationCap}></FontAwesomeIcon>
                     </div>
                 </span>
             </div>
-            <p className="text-center font-RokhFaNumBold bml:text-xl lg:text-2xl dark:text-lightSecondaryWhite font-light text-lg mb-6">
+            <p className='mb-6 text-center font-RokhFaNumBold text-lg font-light dark:text-lightSecondaryWhite bml:text-xl lg:text-2xl'>
                 دوره های فراوان در دسته بندی های مختلف
             </p>
-            <div className="group relative px-2 text-lightWhite font-danafaBold pb-5">
+            <div className='group relative px-2 pb-5 font-danafaBold text-lightWhite'>
                 <Swiper
-                    className="px-2"
+                    className='px-2'
                     modules={[Navigation, Autoplay]}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
-                    onInit={(swiper) => {
+                    onInit={swiper => {
                         swiper.params.navigation = {
                             nextEl: LeftarrowBTN.current,
                             prevEl: RightarrowBTN.current,
@@ -74,27 +66,26 @@ const CategorySection = () => {
                             slidesPerView: 4,
                             spaceBetween: 20,
                         },
-                    }}
-                >
-                    {AllCategories.map((item) => (
+                    }}>
+                    {AllCategories.map(item => (
                         <SwiperSlide
                             key={item.id}
-                            className="text-Gray dark:bg-darkFourthBlack flex flex-col items-center p-2 rounded-md hover:bg-main dark:hover:bg-main dark:text-lightWhite hover:text-lightWhite cursor-pointer transition-all duration-300 group/swiperslide mb-8 shadow-lg"
-                        >
-                            <CategoryItem key={item.id} {...item} />
+                            className='group/swiperslide mb-8 flex cursor-pointer flex-col items-center rounded-md p-2 text-Gray shadow-lg transition-all duration-300 hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightWhite dark:hover:bg-main'>
+                            <CategoryItem
+                                key={item.id}
+                                {...item}
+                            />
                         </SwiperSlide>
                     ))}
                 </Swiper>
                 <div
                     ref={LeftarrowBTN}
-                    className="absolute top-1/4 -translate-y-1 md:translate-y-1 lg:translate-y-3 left-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115 xl:pt-[7.5px] bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full px-[8px] py-[7px] flex place-items-center transition-all duration-500 cursor-pointer"
-                >
+                    className='md:group-hover:scale-115 absolute left-1 top-1/4 -z-[1] flex -translate-y-1 scale-0 cursor-pointer place-items-center rounded-full bg-darkThirdBlack px-[8px] py-[7px] text-lightSecondaryWhite opacity-0 transition-all duration-500 group-hover:z-[10] group-hover:scale-75 group-hover:opacity-100 2xs:group-hover:scale-100 md:translate-y-1 bml:group-hover:scale-125 lg:translate-y-3 lg:group-hover:scale-150 xl:pt-[7.5px] xl:group-hover:scale-[1.75]'>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
                 <div
                     ref={RightarrowBTN}
-                    className="absolute top-1/4 -translate-y-1 md:translate-y-1 lg:translate-y-3 right-1 -z-[1] opacity-0 scale-0 group-hover:scale-75 2xs:group-hover:scale-100 md:group-hover:scale-115 xl:pt-[7.5px] bml:group-hover:scale-125 lg:group-hover:scale-150 xl:group-hover:scale-[1.75] group-hover:opacity-100 group-hover:z-[10] bg-darkThirdBlack text-lightSecondaryWhite rounded-full px-[8px] py-[7px] flex place-items-center transition-all duration-500 cursor-pointer"
-                >
+                    className='md:group-hover:scale-115 absolute right-1 top-1/4 -z-[1] flex -translate-y-1 scale-0 cursor-pointer place-items-center rounded-full bg-darkThirdBlack px-[8px] py-[7px] text-lightSecondaryWhite opacity-0 transition-all duration-500 group-hover:z-[10] group-hover:scale-75 group-hover:opacity-100 2xs:group-hover:scale-100 md:translate-y-1 bml:group-hover:scale-125 lg:translate-y-3 lg:group-hover:scale-150 xl:pt-[7.5px] xl:group-hover:scale-[1.75]'>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </div>
             </div>

@@ -1,11 +1,5 @@
 import { faJsSquare } from "@fortawesome/free-brands-svg-icons"
-import {
-    faBrain,
-    faDesktop,
-    faMobileAndroidAlt,
-    faNetworkWired,
-    faS,
-} from "@fortawesome/free-solid-svg-icons"
+import { faBrain, faDesktop, faMobileAndroidAlt, faNetworkWired, faS } from "@fortawesome/free-solid-svg-icons"
 import { createSelector, createSlice } from "@reduxjs/toolkit"
 
 // import images
@@ -235,10 +229,10 @@ export const categories = createSlice({
 export const getCategories = (state: RootState) => state.Categories
 
 // find and get all courses like this getCourses(RootState) * result only changes when the categories updated(getCategories returns new value)
-export const getCourses = createSelector([getCategories], (categories) => {
+export const getCourses = createSelector([getCategories], categories => {
     let All_Courses: T_Course[] = []
-    categories.forEach((category) => {
-        category.courses.forEach((course) => {
+    categories.forEach(category => {
+        category.courses.forEach(course => {
             All_Courses.push(course)
         })
     })
@@ -247,22 +241,13 @@ export const getCourses = createSelector([getCategories], (categories) => {
 
 // get one specific catgory like this getCategory(RootState,categoryName) *result changed when getCategories returns new value or request new categoryName
 export const getCategory = createSelector(
-    [
-        getCategories,
-        (RootState: RootState, categoryName: string) => categoryName,
-    ],
-    (categories, categoryName) =>
-        categories.find((category) => category.categoryName === categoryName)
+    [getCategories, (RootState: RootState, categoryName: string) => categoryName],
+    (categories, categoryName) => categories.find(category => category.categoryName === categoryName)
 )
 
 // get specific Course like this getCourse(RootState,categoryName,courseName) *result changed when getCategory returns new value or request new courseName
 export const getCourse = createSelector(
-    [
-        getCategory,
-        (RootState: RootState, categoryName: string, courseName: string) =>
-            courseName,
-    ],
-    (categoryName, courseName) =>
-        categoryName?.courses.find((course) => course.courseName === courseName)
+    [getCategory, (RootState: RootState, categoryName: string, courseName: string) => courseName],
+    (categoryName, courseName) => categoryName?.courses.find(course => course.courseName === courseName)
 )
 export default categories.reducer

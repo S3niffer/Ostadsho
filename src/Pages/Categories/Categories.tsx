@@ -6,11 +6,11 @@ import GreenTopFooter from "../../components/GreenTopFooter/GreenTopFooter"
 
 const Categories = () => {
     return (
-        <div className="Categories">
+        <div className='Categories'>
             <Header />
             <BreadCrumb />
             <CoursesSectionWithFiltering />
-            <Footer dynamicDepart="E_NAMAD">
+            <Footer dynamicDepart='E_NAMAD'>
                 <GreenTopFooter />
             </Footer>
         </div>

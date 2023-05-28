@@ -1,14 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { ThemeChanger, getTheme } from "../../App/Slices/Theme";
-import { useMemo } from 'react'
+import { useSelector, useDispatch } from "react-redux"
+import { ThemeChanger, getTheme } from "../../App/Slices/Theme"
+import { useMemo } from "react"
 
 const ThemeChangerBtn = () => {
-
     const Dispatch = useDispatch()
     const Theme = useSelector(getTheme)
 
     useMemo(() => {
-        let getThemeromLocalStorage = localStorage.getItem('theme')
+        let getThemeromLocalStorage = localStorage.getItem("theme")
 
         if (Theme === getThemeromLocalStorage) return
 
@@ -17,16 +16,14 @@ const ThemeChangerBtn = () => {
 
     return (
         <div
-            className="btn bg-SecondaryGray dark:bg-main duration-500 w-16 h-12 py-[6px] px-[14px]"
+            className='btn h-12 w-16 bg-SecondaryGray px-[14px] py-[6px] duration-500 dark:bg-main'
             onClick={() => {
                 Dispatch(ThemeChanger())
-            }}
-        >
+            }}>
             <span
-                className={`bg-white block w-[24px] h-full duration-500 rounded-md 
-                ${Theme === "DARK" ? "translate-x-2" : "-translate-x-5"}`}
-            ></span>
+                className={`block h-full w-[24px] rounded-md bg-white duration-500 
+                ${Theme === "DARK" ? "translate-x-2" : "-translate-x-5"}`}></span>
         </div>
-    );
-};
-export default ThemeChangerBtn;
+    )
+}
+export default ThemeChangerBtn

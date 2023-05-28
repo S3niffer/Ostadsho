@@ -1,21 +1,20 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom"
-import { makeMenubarHidden } from "../App/Slices/MenubarVisibility";
+import { makeMenubarHidden } from "../App/Slices/MenubarVisibility"
 
 const UseScrollandMenubarReset = () => {
-
     const location = useLocation()
     const Dispatch = useDispatch()
 
     useEffect(() => {
-        (document.querySelector('.App') as HTMLDivElement).scrollTo({
+        ;(document.querySelector(".App") as HTMLDivElement).scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth",
         })
         Dispatch(makeMenubarHidden())
     }, [location.pathname])
 
-    return null;
+    return null
 }
 export default UseScrollandMenubarReset

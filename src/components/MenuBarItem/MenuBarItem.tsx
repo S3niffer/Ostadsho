@@ -5,37 +5,36 @@ import { Link } from "react-router-dom"
 const MenuBarItem = (item: T_NavbarItem) => {
     return (
         <div
-            className={`pb-4 overflow-hidden text-ThirdGray  dark:text-lightWhite ${
-                item.lasindex
-                    ? "mt-5"
-                    : "my-5 border border-transparent border-b-gray-200"
-            }`}
-        >
+            className={`overflow-hidden pb-4 text-ThirdGray  dark:text-lightWhite ${
+                item.lasindex ? "mt-5" : "my-5 border border-transparent border-b-gray-200"
+            }`}>
             <input
-                type="checkbox"
-                className="absolute z-10 w-[250px] opacity-0 cursor-pointer h-7 translate-y-2"
+                type='checkbox'
+                className='absolute z-10 h-7 w-[250px] translate-y-2 cursor-pointer opacity-0'
                 id={item.title}
-                onBlur={(e) => (e.target.checked = false)}
+                onBlur={e => (e.target.checked = false)}
             />
-            <div className="icon-container flex justify-between items-center text-base font-semibold ">
+            <div className='icon-container flex items-center justify-between text-base font-semibold '>
                 <label htmlFor={item.title}>
-                    <div className="cursor-pointer">{item.title}</div>
+                    <div className='cursor-pointer'>{item.title}</div>
                 </label>
                 <label htmlFor={item.title}>
-                    <div className="pt-1 cursor-pointer ">
+                    <div className='cursor-pointer pt-1 '>
                         <FontAwesomeIcon
                             icon={faAngleDown}
-                            className="bg-black/10 rotate-180 transition-all duration-300  text-ThirdGray/75 dark:text-lightWhite rounded-full p-1 text-sm flex items-center"
+                            className='flex rotate-180 items-center rounded-full  bg-black/10 p-1 text-sm text-ThirdGray/75 transition-all duration-300 dark:text-lightWhite'
                         />
                     </div>
                 </label>
             </div>
             {item.submenu ? (
-                <div className="ul-container max-h-0 transition-all duration-1000">
-                    <ul className=" flex flex-col gap-1 pt-4">
-                        {item.submenu.map((subItem) => (
-                            <Link key={subItem.id} to={subItem.link}>
-                                <li className="cursor-pointer bg-lightSecondaryWhite dark:bg-darkThirdBlack dark:hover:bg-light_green hover:bg-light_green hover:text-main text-sm pr-4 rounded-lg py-2">
+                <div className='ul-container max-h-0 transition-all duration-1000'>
+                    <ul className=' flex flex-col gap-1 pt-4'>
+                        {item.submenu.map(subItem => (
+                            <Link
+                                key={subItem.id}
+                                to={subItem.link}>
+                                <li className='cursor-pointer rounded-lg bg-lightSecondaryWhite py-2 pr-4 text-sm hover:bg-light_green hover:text-main dark:bg-darkThirdBlack dark:hover:bg-light_green'>
                                     {subItem.title}
                                 </li>
                             </Link>

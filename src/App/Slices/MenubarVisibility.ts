@@ -10,17 +10,15 @@ const MenubarVisibility = createSlice({
     name: "MenubarVisibility",
     initialState,
     reducers: {
-        makeMenubarVisible: (state) => {
+        makeMenubarVisible: state => {
             state.status = true
         },
-        makeMenubarHidden: (state) => {
+        makeMenubarHidden: state => {
             state.status = false
         },
     },
 })
 
-export const getMenubarVisibilityStatus = (state: RootState) =>
-    state.MenubarVisibility.status
-export const { makeMenubarVisible, makeMenubarHidden } =
-    MenubarVisibility.actions
+export const getMenubarVisibilityStatus = (state: RootState) => state.MenubarVisibility.status
+export const { makeMenubarVisible, makeMenubarHidden } = MenubarVisibility.actions
 export default MenubarVisibility.reducer

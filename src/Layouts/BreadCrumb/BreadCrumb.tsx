@@ -7,9 +7,7 @@ import { useSelector } from "react-redux"
 import { getCategories } from "../../App/Slices/Courses"
 
 const BreadCrumb = () => {
-    const [BreadCrumbs, setBreadCrumbs] = useState<T_BreadCrumb[]>([
-        { id: 0, title: "خانه", href: "/" },
-    ])
+    const [BreadCrumbs, setBreadCrumbs] = useState<T_BreadCrumb[]>([{ id: 0, title: "خانه", href: "/" }])
     const { pathname } = useLocation()
     const AllCategories = useSelector(getCategories)
 
@@ -22,9 +20,7 @@ const BreadCrumb = () => {
                     { id: 1, title: "آموزش برنامه نویسی", href: pathname },
                 ])
             } else {
-                const mainCategory = AllCategories.find(
-                    (category) => category.categoryName === categoryName
-                )
+                const mainCategory = AllCategories.find(category => category.categoryName === categoryName)
                 const mainCategoryTitle = mainCategory?.title
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
@@ -35,33 +31,27 @@ const BreadCrumb = () => {
     }, [pathname])
 
     return (
-        <div className="BreadCrumb">
-            <div className="container py-10 px-4 md:px-0 text-lightWhite flex flex-col lg:flex-row justify-between lg:items-center">
+        <div className='BreadCrumb'>
+            <div className='container flex flex-col justify-between px-4 py-10 text-lightWhite md:px-0 lg:flex-row lg:items-center'>
                 <div>
-                    <h3 className="font-danafaBold text-2xl">
-                        تمامی محصولات سایت
-                    </h3>
-                    <div className="mt-3 mb-5 lg:text-lg flex gap-4">
+                    <h3 className='font-danafaBold text-2xl'>تمامی محصولات سایت</h3>
+                    <div className='mb-5 mt-3 flex gap-4 lg:text-lg'>
                         {BreadCrumbs.map(({ href, id, title }, index) => (
                             <React.Fragment key={id}>
                                 <Link
                                     to={href}
-                                    className={`text-lg font-RokhFaNumBold font-semibold hover:text-[#333333] ${
-                                        BreadCrumbs.length === ++index
-                                            ? "text-[#a2d6a8] hover:text-[#a2d6a8]"
-                                            : undefined
+                                    className={`font-RokhFaNumBold text-lg font-semibold hover:text-[#333333] ${
+                                        BreadCrumbs.length === ++index ? "text-[#a2d6a8] hover:text-[#a2d6a8]" : undefined
                                     }`}
                                 >
                                     {" " + title + " "}
                                 </Link>
-                                {BreadCrumbs.length === index ? null : (
-                                    <FontAwesomeIcon icon={faChevronLeft} />
-                                )}
+                                {BreadCrumbs.length === index ? null : <FontAwesomeIcon icon={faChevronLeft} />}
                             </React.Fragment>
                         ))}
                     </div>
                 </div>
-                <div className="flex-grow-[0.22] xl:text-lg">
+                <div className='flex-grow-[0.22] xl:text-lg'>
                     <SearchInput />
                 </div>
             </div>

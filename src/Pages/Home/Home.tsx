@@ -8,7 +8,7 @@ import BlackTopFooter from "../../components/BlackTopFooter/BlackTopFooter"
 
 const Home = () => {
     return (
-        <div className="Home">
+        <div className='Home'>
             <Header shadow />
             <HeroSection />
             <CategorySection />

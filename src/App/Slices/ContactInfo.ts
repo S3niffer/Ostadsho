@@ -1,8 +1,4 @@
-import {
-    faMailBulk,
-    faMapLocationDot,
-    faPhoneFlip,
-} from "@fortawesome/free-solid-svg-icons"
+import { faMailBulk, faMapLocationDot, faPhoneFlip } from "@fortawesome/free-solid-svg-icons"
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState: T_ContactInfo[] = [

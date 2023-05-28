@@ -13,7 +13,7 @@
         @apply bg-transparent dark:bg-darkBlack;
     }
     ::-webkit-scrollbar-thumb {
-        @apply bg-ThirdGray dark:bg-lightFifthhWhite hover:bg-SecondaryGray;
+        @apply bg-ThirdGray hover:bg-SecondaryGray dark:bg-lightFifthhWhite;
     }
     ::-webkit-scrollbar-thumb:hover {
         @apply bg-Gray dark:bg-SecondaryGray;
@@ -25,7 +25,7 @@
         cursor: pointer;
     }
     .btn-green {
-        @apply bg-light_green text-main fill-main hover:fill-white hover:bg-main hover:text-lightWhite;
+        @apply bg-light_green fill-main text-main hover:bg-main hover:fill-white hover:text-lightWhite;
     }
 }
 @media (min-height: 50vh) {
