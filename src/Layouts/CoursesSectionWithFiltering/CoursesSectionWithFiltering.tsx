@@ -6,95 +6,139 @@ import Pagination from "../Pagination/pagination"
 import AdvertisingGIF from "../../Assets/bonrailco-1.gif"
 import { useSelector } from "react-redux"
 import { getCategories, getCourses } from "../../App/Slices/Courses"
-import { Link, useParams } from "react-router-dom"
-import { useEffect, useMemo, useState } from "react"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { useEffect, useMemo, useReducer } from "react"
+
+const initialState: T_InitialState = {
+    priceRange: {
+        min: "0",
+        max: "0",
+    },
+    paginationDetails: {
+        itemsCount: 3,
+        lastIndex: -1,
+        status: true,
+    },
+    sortOrder: "noOrder",
+}
+
+const Reducer: T_Reducer = (state, action) => {
+    const { type, payload } = action
+    switch (type) {
+        case "SET_PriceRange": {
+            return { ...state, priceRange: payload }
+        }
+        case "SET_SortOption": {
+            return { ...state, sortOrder: payload }
+        }
+        case "SET_LastIndex": {
+            return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: payload } }
+        }
+    }
+}
 
 const CoursesSectionWithFiltering = () => {
     const RawCourses = useSelector(getCourses)
     const AllCategories = useSelector(getCategories)
     const { Category_Name } = useParams()
-    const [FilteredCourses, setFilteredCourses] = useState<T_Course[]>(RawCourses)
-    const [priceRange, setPriceRange] = useState<T_PriceRange>({
-        min: "0",
-        max: "0",
-    })
-    const [highestPrice, sethighestPrice] = useState<number>(0)
-    const [SliceCourseOption, setSliceCourseOption] = useState<T_SliceCourseOption>({
-        lastIndex: -1,
-        coursePerPage: FilteredCourses.length,
-    })
-    // filterThecourseBy Category_Name
+    const Navigate = useNavigate()
+    const [state, Dispatch] = useReducer(Reducer, initialState)
+
+    const categoryCourses = useMemo(() => {
+        if (Category_Name !== "All") {
+            const findCourses = AllCategories.find(({ categoryName }) => Category_Name === categoryName)?.courses
+            return findCourses ? findCourses : []
+        } else {
+            return RawCourses
+        }
+    }, [Category_Name, RawCourses])
+
+    const highestPrice = useMemo(() => {
+        const result = categoryCourses?.reduce((Prv, Crnt) => (Prv.price > Crnt.price ? Prv : Crnt)).price
+        Dispatch({ type: "SET_PriceRange", payload: { min: "0", max: String(result) } })
+        return result
+    }, [categoryCourses])
+
+    const filteredByPrice = useMemo(() => {
+        const { min, max } = state.priceRange
+
+        const filtered = categoryCourses?.filter(({ price }) => (price > +max || price < +min ? false : true))
+        if (state.sortOrder === "noOrder") {
+            return filtered
+        } else if (state.sortOrder === "Cheap") {
+            return filtered?.sort(({ price: a }, { price: b }) => a - b)
+        } else {
+            return filtered?.sort(({ price: a }, { price: b }) => b - a)
+        }
+    }, [state.sortOrder, state.priceRange])
+
+    const paginateCourses = useMemo(() => {
+        if (filteredByPrice?.length === 0) return []
+        const { lastIndex, itemsCount } = state.paginationDetails
+        if (lastIndex === -1) return filteredByPrice
+        return filteredByPrice?.slice(lastIndex - itemsCount, lastIndex)
+    }, [state.paginationDetails.lastIndex, filteredByPrice])
+
+    // prevent conflict (PriceFiltering & pagination)
     useEffect(() => {
-        if (Category_Name === "All") {
-            setFilteredCourses(RawCourses)
-            return
+        if (filteredByPrice.length !== 0 && paginateCourses.length === 0) {
+            Navigate(`/categories/${Category_Name}/1`)
         }
-        const filteredByNamecategory = RawCourses.slice().filter(course => course.categoryName === Category_Name)
-        setFilteredCourses(filteredByNamecategory)
-    }, [RawCourses, Category_Name])
-
-    // Find the highest Price of courses to show in the filrPrcieComponent
-    const highestPriceResult = useMemo(() => {
-        return FilteredCourses.reduce((prv, crnt) => (prv.price > crnt.price ? prv : crnt)).price
-    }, [FilteredCourses])
-
-    // only if the highest priceResult changed setState (setPriceRange,setHighestPrice)
-    useEffect(() => {
-        setPriceRange({
-            min: String(0),
-            max: String(highestPriceResult),
-        })
-        sethighestPrice(highestPriceResult)
-    }, [highestPriceResult])
-
-    const _sortHandler = (sortOption: T_SortOption) => {
-        if (!sortOption) {
-            const NewFilteredList = FilteredCourses.slice().sort(() => Math.random() - 0.5)
-            setFilteredCourses(NewFilteredList)
-        }
-        if (sortOption === "Cheap") {
-            const NewFilteredList = FilteredCourses.slice().sort((a, b) => a.price - b.price)
-            setFilteredCourses(NewFilteredList)
-        }
-        if (sortOption === "Expensive") {
-            const NewFilteredList = FilteredCourses.slice().sort((a, b) => a.price - b.price)
-            setFilteredCourses(NewFilteredList.reverse())
-        }
-    }
+    }, [filteredByPrice, paginateCourses])
 
     return (
         <div className='CoursesSectionWithFiltering container px-2 md:px-0'>
-            <SortSection _sortHandler={_sortHandler} />
+            {useMemo(() => {
+                return <SortSection Dispatch={Dispatch} />
+            }, [])}
             <div className='courses-sideBar flex flex-col md:flex-row'>
                 <div className='courses-container md:flex-1'>
-                    <div className='grid grid-cols-1 gap-x-4 gap-y-16 py-8 bml:grid-cols-2 xl:grid-cols-3'>
-                        {FilteredCourses.filter(({ price }) => {
-                            const { min, max } = priceRange
-                            if (price < Number(min) || price > Number(max)) {
-                                return false
-                            }
-                            return true
-                        })
-                            .slice(SliceCourseOption.lastIndex - SliceCourseOption.coursePerPage, SliceCourseOption.lastIndex)
-                            .map((couresObj, index) => (
-                                <CourseCard
-                                    key={index}
-                                    {...couresObj}
+                    {filteredByPrice.length === 0 ? (
+                        <div className='flex flex-col items-center justify-center gap-2'>
+                            <div className='lds-heart'>
+                                <div></div>
+                            </div>
+                            <p className='w-56 text-justify font-RokhFaNumBold text-xl'>
+                                عی بابا مثل اینکه تموم شد قصه نخور دفعه بعدی میاریم
+                            </p>
+                        </div>
+                    ) : (
+                        <>
+                            <div className='grid grid-cols-1 gap-x-4 gap-y-16 pt-8 bml:grid-cols-2 xl:grid-cols-3'>
+                                {useMemo(
+                                    () =>
+                                        paginateCourses.map((couresObj, index) => (
+                                            <CourseCard
+                                                key={index}
+                                                {...couresObj}
+                                            />
+                                        )),
+                                    [paginateCourses]
+                                )}
+                            </div>
+
+                            {filteredByPrice.length > state.paginationDetails.itemsCount && state.paginationDetails.status ? (
+                                <Pagination
+                                    items={filteredByPrice}
+                                    itemsCount={state.paginationDetails.itemsCount}
+                                    Dispatch={Dispatch}
                                 />
-                            ))}
-                    </div>
-                    <Pagination
-                        setSliceCourseOption={setSliceCourseOption}
-                        FilteredCourses={FilteredCourses}
-                        priceRange={priceRange}
-                    />
+                            ) : null}
+                        </>
+                    )}
                 </div>
+
                 <div className='sidebar mt-12 flex flex-col gap-6 md:mt-0 md:w-[300px] md:pr-5 lg:w-[320px]'>
                     <SideBarBox title='فیلتر براساس قیمت'>
-                        <PriceFilter
-                            _FillterPriceHandler={setPriceRange}
-                            highestPrice={highestPrice}
-                        />
+                        {useMemo(
+                            () => (
+                                <PriceFilter
+                                    Dispatch={Dispatch}
+                                    highestPrice={highestPrice!}
+                                />
+                            ),
+                            [highestPrice]
+                        )}
                     </SideBarBox>
                     <SideBarBox title='دسته بندی محصولات'>
                         <ul className=' flex flex-col'>
@@ -124,8 +168,9 @@ const CoursesSectionWithFiltering = () => {
                                     )
                                 })
                             }, [AllCategories, Category_Name])}
+
                             {Category_Name === "All" ? null : (
-                                <Link to={"/Categories/All"}>
+                                <Link to={"/categories/All"}>
                                     <li className={"group mb-3 cursor-pointer"}>
                                         <div className='flex h-9 items-center justify-between border-r-main px-2 leading-9 text-lightWhite transition-all duration-500 ease-out group-hover:border-r-[6px]'>
                                             <p className='my-auto text-xs text-FifthGray dark:text-SecondaryGray lg:text-sm'>

@@ -29,8 +29,8 @@ declare global {
         imageSrc: string
         courseName: string
         categoryName: string
-        chapter?: T_chapter[]
-        comment?: T_Comment[]
+        chapters?: T_chapter[]
+        comments?: T_Comment[]
         discountPercent?: number
         instructor?: T_Instructor
     }
@@ -94,22 +94,38 @@ declare global {
         max: string
     }
 
+    // categoryPageReducer initialState
+    interface T_InitialState {
+        priceRange: T_PriceRange
+        paginationDetails: {
+            itemsCount: number
+            lastIndex: number
+            status: boolean
+        }
+        sortOrder: T_SortOption
+    }
+
+    type T_Reducer = (state: T_InitialState, action: T_Dispatch) => T_InitialState
+
+    type T_Dispatch =
+        | { type: "SET_PriceRange"; payload: T_PriceRange }
+        | { type: "SET_SortOption"; payload: T_SortOption }
+        | { type: "SET_LastIndex"; payload: number }
+
     interface T_PriceFillter {
-        _FillterPriceHandler: React.Dispatch<React.SetStateAction<T_PriceRange>>
+        Dispatch: React.Dispatch<T_Dispatch>
         highestPrice: number
     }
 
-    type T_SortOption = "Cheap" | "Expensive" | undefined
-
-    interface T_SliceCourseOption {
-        lastIndex: number
-        coursePerPage: number
+    interface T_SortSectionProp {
+        Dispatch: React.Dispatch<T_Dispatch>
     }
+    type T_SortOption = "Cheap" | "Expensive" | "noOrder"
 
     interface T_PaginationProps {
-        setSliceCourseOption: React.Dispatch<React.SetStateAction<T_SliceCourseOption>>
-        FilteredCourses: T_Course[]
-        priceRange: T_PriceRange
+        items: object[]
+        itemsCount: number
+        Dispatch: React.Dispatch<T_Dispatch>
     }
 
     // Store _ Redux
