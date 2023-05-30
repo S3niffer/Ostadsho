@@ -1,34 +1,45 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import ReactSlider from "react-slider"
 
-const PriceFilter = (props: T_PriceFillter) => {
-    const { highestPrice, _FillterPriceHandler } = props
-    const [priceRange, setPriceRange] = useState<T_PriceRange>({
-        min: "0",
-        max: highestPrice.toString(),
-    })
-    const { Category_Name } = useParams()
+const PriceFilter = ({ highestPrice, Dispatch }: T_PriceFillter) => {
+    const [priceRange, setPriceRange] = useState<T_PriceRange>({ min: "0", max: String(highestPrice) })
 
-    const ValueConverter = (value: string) => {
-        let removeComa = value
-            .split("")
-            .filter(letter => letter !== ",")
-            .join("")
-        let NUM_Value = Number(removeComa) || 0
-        if (NUM_Value > highestPrice) {
-            NUM_Value = highestPrice
+    const valueConverter = (value: string) => {
+        const stringNumber = _commaRemover(value)
+
+        let number = Number(stringNumber) || 0
+
+        if (number > highestPrice) {
+            number = highestPrice
         }
-        return NUM_Value.toString()
+
+        return String(number)
     }
-    useEffect(() => {
-        setPriceRange({ min: "0", max: highestPrice.toString() })
-        _FillterPriceHandler(priceRange)
-    }, [highestPrice])
-    useEffect(() => {
-        setPriceRange({ min: "0", max: highestPrice.toString() })
-        _FillterPriceHandler(priceRange)
-    }, [Category_Name])
+
+    const _commaRemover = (value: string) => {
+        return value.replaceAll(",", "")
+    }
+
+    const _valueSetter = (value: React.ChangeEvent<HTMLInputElement> | number[]) => {
+        if (Array.isArray(value)) {
+            setPriceRange({ min: String(value[0]), max: String(value[1]) })
+        } else {
+            const Value = valueConverter(value.target.value)
+            const optionTarget = value.target.name
+
+            setPriceRange(prv => ({ ...prv, [optionTarget]: Value }))
+        }
+    }
+
+    const _enterHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter" && event.currentTarget.value) _setFilter()
+    }
+
+    const _setFilter = () => {
+        Dispatch({ type: "SET_PriceRange", payload: priceRange })
+    }
+
+    useEffect(() => setPriceRange({ min: "0", max: highestPrice.toString() }), [highestPrice])
 
     return (
         <div>
@@ -36,19 +47,11 @@ const PriceFilter = (props: T_PriceFillter) => {
                 <p className='pl-2 text-lg text-darkBlack dark:text-lightSecondaryWhite'>از</p>
                 <input
                     type='text'
+                    name='min'
                     className='LTR RTL w-full flex-1 border-b border-secnodryMain bg-[#eee] p-0.5 pl-3  text-2xl caret-main outline-none dark:bg-darkThirdBlack'
-                    value={Number(priceRange.min).toLocaleString().toString()}
-                    onChange={e =>
-                        setPriceRange(prv => ({
-                            ...prv,
-                            min: ValueConverter(e.target.value),
-                        }))
-                    }
-                    onKeyDown={e => {
-                        if (e.key === "Enter" && e.currentTarget.value) {
-                            _FillterPriceHandler(priceRange)
-                        }
-                    }}
+                    value={(+priceRange.min).toLocaleString()}
+                    onChange={_valueSetter}
+                    onKeyDown={_enterHandler}
                 />
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -68,19 +71,11 @@ const PriceFilter = (props: T_PriceFillter) => {
                 <p className='pl-2 text-lg text-darkBlack dark:text-lightSecondaryWhite'>تا</p>
                 <input
                     type='text'
+                    name='max'
                     className='LTR w-full flex-1 border-b border-secnodryMain bg-[#eee] p-0.5 pl-3 text-2xl  caret-main outline-none dark:bg-darkThirdBlack'
-                    value={Number(priceRange.max).toLocaleString().toString()}
-                    onChange={e =>
-                        setPriceRange(prv => ({
-                            ...prv,
-                            max: ValueConverter(e.target.value),
-                        }))
-                    }
-                    onKeyDown={e => {
-                        if (e.key === "Enter" && e.currentTarget.value) {
-                            _FillterPriceHandler(priceRange)
-                        }
-                    }}
+                    value={(+priceRange.max).toLocaleString()}
+                    onChange={_valueSetter}
+                    onKeyDown={_enterHandler}
                 />
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -103,16 +98,9 @@ const PriceFilter = (props: T_PriceFillter) => {
                     thumbClassName='thumb'
                     max={highestPrice}
                     invert
-                    value={[Number(priceRange.min), Number(priceRange.max)]}
-                    onChange={value => {
-                        setPriceRange({
-                            min: value[0].toString(),
-                            max: value[1].toString(),
-                        })
-                    }}
+                    value={[+priceRange.min, +priceRange.max]}
+                    onChange={_valueSetter}
                     minDistance={1}
-                    step={1}
-                    renderThumb={props => <div {...props}></div>}
                 />
                 <div className='flex items-center justify-between pt-6 text-xs'>
                     <p>ارزانترین</p>
@@ -120,9 +108,7 @@ const PriceFilter = (props: T_PriceFillter) => {
                 </div>
             </div>
             <button
-                onClick={() => {
-                    _FillterPriceHandler(priceRange)
-                }}
+                onClick={_setFilter}
                 className='w-full rounded-b-lg bg-main py-2 text-lightWhite transition-all duration-200 hover:bg-green-700/90'
             >
                 اعمال فیلتر
