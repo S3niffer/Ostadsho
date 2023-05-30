@@ -17,7 +17,7 @@ const initialState: T_InitialState = {
     paginationDetails: {
         itemsCount: 3,
         lastIndex: -1,
-        status: true,
+        status: false,
     },
     sortOrder: "noOrder",
 }
@@ -33,6 +33,13 @@ const Reducer: T_Reducer = (state, action) => {
         }
         case "SET_LastIndex": {
             return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: payload } }
+        }
+        case "UPDATE_PaginateStatus": {
+            if (payload) {
+                return { ...state, paginationDetails: { ...state.paginationDetails, status: payload } }
+            } else {
+                return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: -1, status: payload } }
+            }
         }
     }
 }
@@ -86,10 +93,22 @@ const CoursesSectionWithFiltering = () => {
         }
     }, [filteredByPrice, paginateCourses])
 
+    // reset url after turn off paginate
+    useEffect(() => {
+        if (state.paginationDetails.status) return
+
+        Navigate(`/categories/${Category_Name}`)
+    }, [state.paginationDetails.status])
+
     return (
         <div className='CoursesSectionWithFiltering container px-2 md:px-0'>
             {useMemo(() => {
-                return <SortSection Dispatch={Dispatch} />
+                return (
+                    <SortSection
+                        Dispatch={Dispatch}
+                        paginateStat={state.paginationDetails.status}
+                    />
+                )
             }, [])}
             <div className='courses-sideBar flex flex-col md:flex-row'>
                 <div className='courses-container md:flex-1'>
@@ -141,7 +160,7 @@ const CoursesSectionWithFiltering = () => {
                         )}
                     </SideBarBox>
                     <SideBarBox title='دسته بندی محصولات'>
-                        <ul className=' flex flex-col'>
+                        <ul className=' flex flex-col pb-3'>
                             {useMemo(() => {
                                 return AllCategories.map(category => {
                                     if (Category_Name === category.categoryName) return null
@@ -152,14 +171,14 @@ const CoursesSectionWithFiltering = () => {
                                         >
                                             <li
                                                 className={
-                                                    "group h-9 cursor-pointer border-b border-b-lightFourthWhite dark:border-b-darkThirdBlack"
+                                                    "group h-9 cursor-pointer border-t border-t-lightFourthWhite dark:border-t-darkThirdBlack"
                                                 }
                                             >
                                                 <div className='flex h-9 items-center justify-between border-r-main px-2 leading-9 text-lightWhite transition-all duration-500 ease-out group-hover:border-r-[6px]'>
-                                                    <p className='my-auto text-xs text-FifthGray dark:text-SecondaryGray lg:text-sm'>
+                                                    <p className='my-auto text-sm text-FifthGray dark:text-SecondaryGray lg:text-[15px]'>
                                                         {category.title}
                                                     </p>
-                                                    <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[10px] pt-[3px] text-xs lg:w-5'>
+                                                    <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[12px] pt-[3px] text-sm lg:w-5'>
                                                         {category.courses.length}
                                                     </span>
                                                 </div>
@@ -171,12 +190,16 @@ const CoursesSectionWithFiltering = () => {
 
                             {Category_Name === "All" ? null : (
                                 <Link to={"/categories/All"}>
-                                    <li className={"group mb-3 cursor-pointer"}>
+                                    <li
+                                        className={
+                                            "group cursor-pointer border-t border-t-lightFourthWhite dark:border-t-darkThirdBlack"
+                                        }
+                                    >
                                         <div className='flex h-9 items-center justify-between border-r-main px-2 leading-9 text-lightWhite transition-all duration-500 ease-out group-hover:border-r-[6px]'>
                                             <p className='my-auto text-xs text-FifthGray dark:text-SecondaryGray lg:text-sm'>
                                                 همه دسته بندی ها
                                             </p>
-                                            <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[10px] pt-[3px] text-xs lg:w-5'>
+                                            <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[12px] pt-[3px] text-sm lg:w-5'>
                                                 {RawCourses.length}
                                             </span>
                                         </div>

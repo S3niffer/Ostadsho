@@ -1,11 +1,12 @@
-import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import { faReorder } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 
-const SortSection = ({ Dispatch }: T_SortSectionProp) => {
+const SortSection = ({ Dispatch, paginateStat }: T_SortSectionProp) => {
     const [sortOption, setsortOption] = useState<T_SortOption>("noOrder")
+    const [checkedStatus, SETcheckedStatus] = useState(paginateStat)
 
-    const _clickHandler = useCallback(
+    const _onClickHandler = useCallback(
         (option: T_SortOption) => {
             if (sortOption === option) {
                 setsortOption("noOrder")
@@ -17,15 +18,39 @@ const SortSection = ({ Dispatch }: T_SortSectionProp) => {
         },
         [sortOption]
     )
+    const _onCheckHandler = useCallback(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+            SETcheckedStatus(event.target.checked)
+            Dispatch({ type: "UPDATE_PaginateStatus", payload: event.target.checked })
+        },
+        [checkedStatus]
+    )
     return (
         <div className='SortSection my-6 flex items-center gap-1 px-2 2xs:gap-2 md:mb-10 md:gap-6 md:px-0'>
-            <div>
-                <FontAwesomeIcon
-                    icon={faFilter}
-                    className='ml-2 text-Gray dark:text-SecondaryGray md:text-xl'
-                />
-                <span className='dark:text-lightSecondaryWhite xs:text-base md:text-xl lg:text-2xl'>فیلترمحصولات</span>
-                <p className='font-RokhFaNumBold text-lg font-bold xs:text-[22px] md:text-2xl bml:text-3xl'>براساس:</p>
+            <div className='flex flex-col gap-2 sm:gap-3 md:gap-5'>
+                <div>
+                    <FontAwesomeIcon
+                        icon={faReorder}
+                        className='ml-2 text-Gray dark:text-SecondaryGray md:text-xl'
+                    />
+                    <span className='text-xs dark:text-lightSecondaryWhite xs:text-base md:text-xl lg:text-2xl'>مرتب سازی</span>
+                    <p className='font-RokhFaNumBold text-lg font-bold xs:text-[22px] md:text-2xl bml:text-3xl'>براساس:</p>
+                </div>
+                <div className='checkBoxContainer'>
+                    <input
+                        type='checkbox'
+                        id='activePaginate'
+                        className='activePaginate hidden'
+                        checked={checkedStatus}
+                        onChange={_onCheckHandler}
+                    />
+                    <label
+                        htmlFor='activePaginate'
+                        className='cursor-pointer rounded-md px-2 py-1.5 text-xs shadow dark:bg-darkFourthBlack xs:text-sm md:text-sm'
+                    >
+                        نمایش سه تایی
+                    </label>
+                </div>
             </div>
             <div className='flex flex-1 justify-between gap-1 2xs:gap-4 xs:justify-normal md:gap-6'>
                 <div
@@ -35,7 +60,7 @@ const SortSection = ({ Dispatch }: T_SortSectionProp) => {
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
                     onClick={() => {
-                        _clickHandler("Cheap")
+                        _onClickHandler("Cheap")
                     }}
                 >
                     <svg
@@ -174,7 +199,7 @@ const SortSection = ({ Dispatch }: T_SortSectionProp) => {
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
                     onClick={() => {
-                        _clickHandler("Expensive")
+                        _onClickHandler("Expensive")
                     }}
                 >
                     <svg

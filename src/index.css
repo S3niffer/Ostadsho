@@ -215,6 +215,11 @@ input:checked ~ .icon-container svg {
     }
 }
 
+.activePaginate:checked + label {
+    background: #52ac66;
+    color: white;
+}
+
 @font-face {
     font-family: "yekaBakh";
     src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");

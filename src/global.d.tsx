@@ -111,6 +111,7 @@ declare global {
         | { type: "SET_PriceRange"; payload: T_PriceRange }
         | { type: "SET_SortOption"; payload: T_SortOption }
         | { type: "SET_LastIndex"; payload: number }
+        | { type: "UPDATE_PaginateStatus"; payload: boolean }
 
     interface T_PriceFillter {
         Dispatch: React.Dispatch<T_Dispatch>
@@ -119,6 +120,7 @@ declare global {
 
     interface T_SortSectionProp {
         Dispatch: React.Dispatch<T_Dispatch>
+        paginateStat: boolean
     }
     type T_SortOption = "Cheap" | "Expensive" | "noOrder"
 
