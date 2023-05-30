@@ -1,61 +1,72 @@
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
-const Pagination = ({ setSliceCourseOption, FilteredCourses: Courses, priceRange }: T_PaginationProps) => {
+const Pagination = ({ items, itemsCount, Dispatch }: T_PaginationProps) => {
     const { Category_Name, PageNumber } = useParams()
-    const [status, setStatus] = useState({ showPerPage: 3, Pages: 1 })
     const Navigate = useNavigate()
+    const [activePage, setActivePage] = useState(1)
+
+    const pagesCount = useMemo(() => {
+        return Math.ceil(items.length / itemsCount)
+    }, [items, itemsCount])
+
+    // Validate PageNumber
     useEffect(() => {
-        const FilteredCourses = Courses.filter(({ price }) => {
-            const { min, max } = priceRange
-            if (price < Number(min) || price > Number(max)) {
-                return false
+        if (PageNumber) {
+            if (isNaN(+PageNumber)) {
+                Navigate(`/categories/${Category_Name}/1`)
+            } else {
+                const goToPage: number = +PageNumber < pagesCount ? (+PageNumber < 1 ? 1 : +PageNumber) : pagesCount
+                setActivePage(goToPage)
             }
-            return true
-        })
+        } else {
+            setActivePage(1)
+        }
+    }, [pagesCount, PageNumber])
 
-        const Pages = Math.ceil(FilteredCourses.length / status.showPerPage)
-        const lastIndex = (Number(PageNumber) || 1) * status.showPerPage
-        setStatus(prv => ({ ...prv, Pages }))
-        setSliceCourseOption({ coursePerPage: 3, lastIndex: lastIndex })
-    }, [PageNumber, Courses, priceRange])
+    //  set lastIndex
+    useEffect(() => {
+        if (pagesCount === 1) return
+        const LastIndex = itemsCount * activePage
 
-    if (Number(PageNumber) > status.Pages) {
-        Navigate(`/Categories/${Category_Name}/${status.Pages}`)
-    }
+        Dispatch({ type: "SET_LastIndex", payload: LastIndex })
+    }, [activePage, PageNumber])
+
     return (
-        <div className='flex items-center justify-center gap-1.5 rounded-xl bg-[rgb(240,240,240)] py-4 font-danafa font-semibold text-ThirdGray dark:bg-darkFourthBlack'>
-            <Link to={`/Categories/${Category_Name}/${Number(PageNumber) ? Number(PageNumber) - 1 : 1}`}>
+        <div className='mt-8 flex items-center justify-center gap-1.5 rounded-xl bg-[rgb(240,240,240)] py-4 font-danafa font-semibold text-ThirdGray dark:bg-darkFourthBlack'>
+            <Link to={`/categories/${Category_Name}/${activePage - 1}`}>
                 <div
                     className={`flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-300 hover:border hover:border-main hover:bg-main hover:text-lightWhite dark:text-SecondaryGray dark:hover:text-lightWhite ${
-                        PageNumber === "1" || PageNumber === undefined ? "hidden" : ""
+                        activePage === 1 ? "hidden" : ""
                     }`}
                 >
                     <FontAwesomeIcon icon={faChevronRight} />
                 </div>
             </Link>
-            {[...new Array(status.Pages)].map((page, index) => (
+
+            {[...Array.from({ length: pagesCount }, (a, index) => index + 1)].map(page => (
                 <Link
-                    key={index}
-                    to={index === 0 ? `/Categories/${Category_Name}` : `/Categories/${Category_Name}/${index + 1}`}
+                    key={page}
+                    to={`/categories/${Category_Name}/${page}`}
                 >
                     <div
                         className={`flex aspect-square w-10 items-center justify-center rounded-full pt-1.5  ${
-                            Number(PageNumber) === index + 1 || (isNaN(Number(PageNumber)) && index === 0)
+                            activePage === page
                                 ? "cursor-not-allowed bg-lightWhite text-darkThirdBlack"
                                 : "cursor-pointer transition-colors duration-300 hover:border hover:border-main hover:bg-main hover:text-lightWhite dark:text-SecondaryGray dark:hover:text-lightWhite"
                         }`}
                     >
-                        {index + 1}
+                        {page}
                     </div>
                 </Link>
             ))}
-            <Link to={`/Categories/${Category_Name}/${Number(PageNumber) ? Number(PageNumber) + 1 : 2}`}>
+
+            <Link to={`/categories/${Category_Name}/${activePage + 1}`}>
                 <div
                     className={`flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-300 hover:border hover:border-main hover:bg-main hover:text-lightWhite dark:text-SecondaryGray dark:hover:text-lightWhite ${
-                        PageNumber === String(status.Pages) || status.Pages === 1 ? "hidden" : ""
+                        activePage === pagesCount ? "hidden" : ""
                     }`}
                 >
                     <FontAwesomeIcon icon={faChevronLeft} />
