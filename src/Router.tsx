@@ -6,7 +6,7 @@ import Course from "./Pages/Course/Course"
 
 const InitRoutes: RouteObject[] = [
     { path: "/", element: <Home /> },
-    { path: "/Categories/:Category_Name/:PageNumber?", element: <Categories /> },
+    { path: "/categories/:Category_Name/:PageNumber?", element: <Categories /> },
     { path: "/:Category_Name/:Course_Name", element: <Course /> },
 ]
 

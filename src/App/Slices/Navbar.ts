@@ -6,7 +6,7 @@ const initialState: T_NavbarItem[] = [
         title: "دسترسی سریع",
         submenu: [
             { id: 0, link: "/", title: "صفحه اصلی" },
-            { id: 1, link: "/Categories/All", title: "صفحه فروشگاه" },
+            { id: 1, link: "/categories/All", title: "صفحه فروشگاه" },
             { id: 2, link: "/basket", title: "صفحه سبد خرید" },
         ],
     },

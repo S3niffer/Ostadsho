@@ -33,7 +33,7 @@ const CoursesSection = () => {
                     </div>
                 </div>
                 <Link
-                    to={"/Categories/All"}
+                    to={"/categories/All"}
                     className='w-2/3 md:w-[150px] lg:w-[200px]'>
                     <div className='relative flex cursor-pointer items-center justify-between  rounded-md bg-ThirdGray py-1.5 text-center text-xs text-lightWhite transition-all duration-300 hover:bg-Gray 2xs:text-sm md:justify-center md:gap-2  md:py-2.5 bml:text-base lg:py-3 lg:text-lg'>
                         <div className='md:hidden'></div>
