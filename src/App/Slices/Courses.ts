@@ -47,7 +47,7 @@ const initialState: T_CategoryItem[] = [
             },
             {
                 id: 2,
-                title: "آموزش پروژه محور جاوااسکریپت",
+                title: "آموزش پروژه محور JS",
                 price: 1_200_000,
                 imageSrc: JAVASCRIPT,
                 courseName: "javascript",
@@ -55,7 +55,7 @@ const initialState: T_CategoryItem[] = [
             },
             {
                 id: 3,
-                title: "آموزش پروژه محور ریکت",
+                title: "آموزش پروژه محور ReactJS",
                 price: 2_600_000,
                 imageSrc: ReactJS,
                 courseName: "react-js",
@@ -63,7 +63,7 @@ const initialState: T_CategoryItem[] = [
             },
             {
                 id: 4,
-                title: "آموزش تخصصی NodeJs",
+                title: "آموزش تخصصی NodeJS",
                 price: 2_400_000,
                 imageSrc: NODEJS,
                 courseName: "node-js",
@@ -88,7 +88,7 @@ const initialState: T_CategoryItem[] = [
         courses: [
             {
                 id: 0,
-                title: "آموزش کاربردی سئو",
+                title: "آموزش کاربردی Seo(سئو)",
                 price: 550_000,
                 imageSrc: Seo,
                 courseName: "seo-course",
@@ -201,7 +201,7 @@ const initialState: T_CategoryItem[] = [
         courses: [
             {
                 id: 0,
-                title: "مقدمه برنامه نویسی دسکتاپ با جاوا",
+                title: "مقدمه برنامه نویسی دسکتاپ با Java",
                 price: 365_000,
                 imageSrc: javadesktop,
                 courseName: "desktop-with-java",
@@ -209,7 +209,7 @@ const initialState: T_CategoryItem[] = [
             },
             {
                 id: 1,
-                title: "توسعه نرم افزار دسکتاپ با سی شارپ",
+                title: "توسعه نرم افزار دسکتاپ با #C",
                 price: 365_000,
                 imageSrc: csharpDesktop,
                 courseName: "desktop-with-csharp",
