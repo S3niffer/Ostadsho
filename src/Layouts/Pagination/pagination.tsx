@@ -12,15 +12,11 @@ const Pagination = ({ items, itemsCount, Dispatch }: T_PaginationProps) => {
         return Math.ceil(items.length / itemsCount)
     }, [items, itemsCount])
 
-    // Validate PageNumber
+    // Handle PageNumber
     useEffect(() => {
         if (PageNumber) {
-            if (isNaN(+PageNumber)) {
-                Navigate(`/categories/${Category_Name}/1`)
-            } else {
-                const goToPage: number = +PageNumber < pagesCount ? (+PageNumber < 1 ? 1 : +PageNumber) : pagesCount
-                setActivePage(goToPage)
-            }
+            const goToPage: number = +PageNumber < pagesCount ? (+PageNumber < 1 ? 1 : +PageNumber) : pagesCount
+            setActivePage(goToPage)
         } else {
             setActivePage(1)
         }
