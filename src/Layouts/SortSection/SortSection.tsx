@@ -1,38 +1,34 @@
 import { faReorder } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useCallback, useState } from "react"
+import { useMemo } from "react"
 
-const SortSection = ({ Dispatch, paginateStat }: T_SortSectionProp) => {
-    const [sortOption, setsortOption] = useState<T_SortOption>("noOrder")
-    const [checkedStatus, SETcheckedStatus] = useState(paginateStat)
+const SortSection = ({ Dispatch, paginate, sortOrder }: T_SortSectionProp) => {
+    const _onClickHandler = (option: T_SortOption) => {
+        if (sortOrder === option) {
+            Dispatch({ type: "SET_SortOption", payload: "noOrder" })
+        } else {
+            Dispatch({ type: "SET_SortOption", payload: option })
+        }
+    }
 
-    const _onClickHandler = useCallback(
-        (option: T_SortOption) => {
-            if (sortOption === option) {
-                setsortOption("noOrder")
-                Dispatch({ type: "SET_SortOption", payload: "noOrder" })
-            } else {
-                setsortOption(option)
-                Dispatch({ type: "SET_SortOption", payload: option })
-            }
-        },
-        [sortOption]
-    )
-    const _onCheckHandler = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-            SETcheckedStatus(event.target.checked)
+    const _onCheckHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (paginate !== event.target.checked) {
             Dispatch({ type: "UPDATE_PaginateStatus", payload: event.target.checked })
-        },
-        [checkedStatus]
-    )
+        }
+    }
     return (
         <div className='SortSection my-6 flex items-center gap-1 px-2 2xs:gap-2 md:mb-10 md:gap-6 md:px-0'>
             <div className='flex flex-col gap-2 sm:gap-3 md:gap-5'>
                 <div>
-                    <FontAwesomeIcon
-                        icon={faReorder}
-                        className='ml-2 text-Gray dark:text-SecondaryGray md:text-xl'
-                    />
+                    {useMemo(
+                        () => (
+                            <FontAwesomeIcon
+                                icon={faReorder}
+                                className='ml-2 text-Gray dark:text-SecondaryGray md:text-xl'
+                            />
+                        ),
+                        []
+                    )}
                     <span className='text-xs dark:text-lightSecondaryWhite xs:text-base md:text-xl lg:text-2xl'>مرتب سازی</span>
                     <p className='font-RokhFaNumBold text-lg font-bold xs:text-[22px] md:text-2xl bml:text-3xl'>براساس:</p>
                 </div>
@@ -41,7 +37,7 @@ const SortSection = ({ Dispatch, paginateStat }: T_SortSectionProp) => {
                         type='checkbox'
                         id='activePaginate'
                         className='activePaginate hidden'
-                        checked={checkedStatus}
+                        checked={paginate}
                         onChange={_onCheckHandler}
                     />
                     <label
@@ -55,7 +51,7 @@ const SortSection = ({ Dispatch, paginateStat }: T_SortSectionProp) => {
             <div className='flex flex-1 justify-between gap-1 2xs:gap-4 xs:justify-normal md:gap-6'>
                 <div
                     className={`flex cursor-pointer flex-col items-center gap-2.5 rounded-md p-4 px-5 shadow-md transition-all duration-300 2xs:px-8 xs:py-5 md:gap-3 md:px-10 bml:px-12 ${
-                        sortOption === "Cheap"
+                        sortOrder === "Cheap"
                             ? "bg-main text-lightSecondaryWhite dark:bg-main dark:text-lightSecondaryWhite"
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
@@ -194,7 +190,7 @@ const SortSection = ({ Dispatch, paginateStat }: T_SortSectionProp) => {
                 </div>
                 <div
                     className={`flex cursor-pointer flex-col items-center gap-2.5 rounded-md p-4 px-5 shadow-md transition-all duration-300 2xs:px-8 xs:py-5 md:gap-3 md:px-10 bml:px-12 ${
-                        sortOption === "Expensive"
+                        sortOrder === "Expensive"
                             ? "bg-main text-lightSecondaryWhite dark:bg-main dark:text-lightSecondaryWhite"
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
