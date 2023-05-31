@@ -47,12 +47,12 @@ input:checked ~ .icon-container svg {
     content: "";
     position: absolute;
     display: block;
-    bottom: 55%;
+    bottom: 50%;
     left: 0;
     width: 100%;
-    height: 1.3px;
+    height: 1.5px;
     background: #868686;
-    rotate: -6.48deg;
+    transform: rotate(-10deg)
 }
 
 .courseCardShadow {
