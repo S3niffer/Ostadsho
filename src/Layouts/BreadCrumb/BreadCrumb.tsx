@@ -17,14 +17,14 @@ const BreadCrumb = () => {
             if (categoryName === "All") {
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
-                    { id: 1, title: "آموزش برنامه نویسی", href: pathname },
+                    { id: 1, title: "همه دسته بندی ها", href: pathname },
                 ])
             } else {
                 const mainCategory = AllCategories.find(category => category.categoryName === categoryName)
                 const mainCategoryTitle = mainCategory?.title
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
-                    { id: 1, title: mainCategoryTitle!, href: pathname },
+                    { id: 1, title: "دسته بندی " + mainCategoryTitle!, href: pathname },
                 ])
             }
         }
