@@ -103,7 +103,10 @@ declare global {
             status: boolean
         }
         sortOrder: T_SortOption
+        categoryCourses: T_Course[]
     }
+
+    type T_InitialStater = (courses: T_Course[], PageNumber: number) => T_InitialState
 
     type T_Reducer = (state: T_InitialState, action: T_Dispatch) => T_InitialState
 
@@ -112,6 +115,7 @@ declare global {
         | { type: "SET_SortOption"; payload: T_SortOption }
         | { type: "SET_LastIndex"; payload: number }
         | { type: "UPDATE_PaginateStatus"; payload: boolean }
+        | { type: "UPDATE_CategoryCourses"; payload: T_Course[] }
 
     interface T_PriceFillter {
         Dispatch: React.Dispatch<T_Dispatch>
@@ -120,7 +124,8 @@ declare global {
 
     interface T_SortSectionProp {
         Dispatch: React.Dispatch<T_Dispatch>
-        paginateStat: boolean
+        paginate: boolean
+        sortOrder: T_SortOption
     }
     type T_SortOption = "Cheap" | "Expensive" | "noOrder"
 

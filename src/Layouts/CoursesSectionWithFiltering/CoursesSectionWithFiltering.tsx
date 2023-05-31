@@ -9,17 +9,20 @@ import { getCategories, getCourses } from "../../App/Slices/Courses"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useMemo, useReducer } from "react"
 
-const initialState: T_InitialState = {
-    priceRange: {
-        min: "0",
-        max: "0",
-    },
-    paginationDetails: {
-        itemsCount: 3,
-        lastIndex: -1,
-        status: false,
-    },
-    sortOrder: "noOrder",
+const initialStater: T_InitialStater = (courses, PageNumber) => {
+    return {
+        priceRange: {
+            min: "0",
+            max: "0",
+        },
+        paginationDetails: {
+            itemsCount: 3,
+            lastIndex: -1,
+            status: PageNumber ? true : false,
+        },
+        sortOrder: "noOrder",
+        categoryCourses: courses,
+    }
 }
 
 const Reducer: T_Reducer = (state, action) => {
@@ -41,35 +44,53 @@ const Reducer: T_Reducer = (state, action) => {
                 return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: -1, status: payload } }
             }
         }
+        case "UPDATE_CategoryCourses": {
+            return { ...state, categoryCourses: payload }
+        }
+        default: {
+            return state
+        }
     }
 }
 
 const CoursesSectionWithFiltering = () => {
     const RawCourses = useSelector(getCourses)
     const AllCategories = useSelector(getCategories)
-    const { Category_Name } = useParams()
+    const { Category_Name, PageNumber } = useParams()
     const Navigate = useNavigate()
-    const [state, Dispatch] = useReducer(Reducer, initialState)
+    const [state, Dispatch] = useReducer(Reducer, initialStater(RawCourses, +PageNumber!))
 
-    const categoryCourses = useMemo(() => {
+    // prevent bug in pagination
+    useEffect(() => {
+        if (!PageNumber) return
+        if (isNaN(+PageNumber)) Navigate(`/categories/${Category_Name}`)
+    }, [PageNumber])
+
+    // Update categoryCourses
+    useEffect(() => {
+        if (state.categoryCourses.length === 0) return
+        let Result: T_Course[]
         if (Category_Name !== "All") {
-            const findCourses = AllCategories.find(({ categoryName }) => Category_Name === categoryName)?.courses
-            return findCourses ? findCourses : []
+            Result = RawCourses.filter(({ categoryName }) => Category_Name === categoryName)
         } else {
-            return RawCourses
+            Result = RawCourses
+        }
+        if (Result !== state.categoryCourses) {
+            Dispatch({ type: "UPDATE_CategoryCourses", payload: Result })
         }
     }, [Category_Name, RawCourses])
 
     const highestPrice = useMemo(() => {
-        const result = categoryCourses?.reduce((Prv, Crnt) => (Prv.price > Crnt.price ? Prv : Crnt)).price
+        if (state.categoryCourses.length === 0) return 0
+        const result = state.categoryCourses?.reduce((Prv, Crnt) => (Prv.price > Crnt.price ? Prv : Crnt)).price
         Dispatch({ type: "SET_PriceRange", payload: { min: "0", max: String(result) } })
         return result
-    }, [categoryCourses])
+    }, [state.categoryCourses])
 
     const filteredByPrice = useMemo(() => {
         const { min, max } = state.priceRange
 
-        const filtered = categoryCourses?.filter(({ price }) => (price > +max || price < +min ? false : true))
+        const filtered = state.categoryCourses?.filter(({ price }) => (price > +max || price < +min ? false : true))
         if (state.sortOrder === "noOrder") {
             return filtered
         } else if (state.sortOrder === "Cheap") {
@@ -102,14 +123,16 @@ const CoursesSectionWithFiltering = () => {
 
     return (
         <div className='CoursesSectionWithFiltering container px-2 md:px-0'>
-            {useMemo(() => {
-                return (
+            {useMemo(
+                () => (
                     <SortSection
                         Dispatch={Dispatch}
-                        paginateStat={state.paginationDetails.status}
+                        paginate={state.paginationDetails.status}
+                        sortOrder={state.sortOrder}
                     />
-                )
-            }, [])}
+                ),
+                [state.paginationDetails.status, state.sortOrder]
+            )}
             <div className='courses-sideBar flex flex-col md:flex-row'>
                 <div className='courses-container md:flex-1'>
                     {filteredByPrice.length === 0 ? (
@@ -136,7 +159,7 @@ const CoursesSectionWithFiltering = () => {
                                 )}
                             </div>
 
-                            {filteredByPrice.length > state.paginationDetails.itemsCount && state.paginationDetails.status ? (
+                            {state.paginationDetails.status && filteredByPrice.length > state.paginationDetails.itemsCount ? (
                                 <Pagination
                                     items={filteredByPrice}
                                     itemsCount={state.paginationDetails.itemsCount}
@@ -153,7 +176,7 @@ const CoursesSectionWithFiltering = () => {
                             () => (
                                 <PriceFilter
                                     Dispatch={Dispatch}
-                                    highestPrice={highestPrice!}
+                                    highestPrice={highestPrice}
                                 />
                             ),
                             [highestPrice]
@@ -188,23 +211,27 @@ const CoursesSectionWithFiltering = () => {
                                 })
                             }, [AllCategories, Category_Name])}
 
-                            {Category_Name === "All" ? null : (
-                                <Link to={"/categories/All"}>
-                                    <li
-                                        className={
-                                            "group cursor-pointer border-t border-t-lightFourthWhite dark:border-t-darkThirdBlack"
-                                        }
-                                    >
-                                        <div className='flex h-9 items-center justify-between border-r-main px-2 leading-9 text-lightWhite transition-all duration-500 ease-out group-hover:border-r-[6px]'>
-                                            <p className='my-auto text-xs text-FifthGray dark:text-SecondaryGray lg:text-sm'>
-                                                همه دسته بندی ها
-                                            </p>
-                                            <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[12px] pt-[3px] text-sm lg:w-5'>
-                                                {RawCourses.length}
-                                            </span>
-                                        </div>
-                                    </li>
-                                </Link>
+                            {useMemo(
+                                () =>
+                                    Category_Name === "All" ? null : (
+                                        <Link to={"/categories/All"}>
+                                            <li
+                                                className={
+                                                    "group cursor-pointer border-t border-t-lightFourthWhite dark:border-t-darkThirdBlack"
+                                                }
+                                            >
+                                                <div className='flex h-9 items-center justify-between border-r-main px-2 leading-9 text-lightWhite transition-all duration-500 ease-out group-hover:border-r-[6px]'>
+                                                    <p className='my-auto text-xs text-FifthGray dark:text-SecondaryGray lg:text-sm'>
+                                                        همه دسته بندی ها
+                                                    </p>
+                                                    <span className='flex aspect-square w-4 select-none items-center justify-center rounded-full bg-main px-[12px] pt-[3px] text-sm lg:w-5'>
+                                                        {RawCourses.length}
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </Link>
+                                    ),
+                                [Category_Name]
                             )}
                         </ul>
                     </SideBarBox>
