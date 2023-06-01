@@ -1,4 +1,4 @@
-const CourseTopPage = ({Course} : {Course : T_Course}) => {
+const CourseTopPage = ({ Course }: { Course: T_Course }) => {
     return (
         <div className='courseMain container px-2 py-4 md:px-0'>
             <div className='flex flex-col items-center gap-2 lg:flex-row'>
@@ -20,13 +20,13 @@ const CourseTopPage = ({Course} : {Course : T_Course}) => {
                             کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
                         </div>
                         <div className='flex flex-col items-center justify-between gap-4 md:flex-row'>
-                            <button className='btn btn-green w-full bg-lightWhite text-xs text-Gray  hover:bg-lightWhite hover:text-Gray dark:bg-darkBlack dark:text-lightThirdWhite bml:text-sm lg:w-44 lg:text-base xl:w-56 xl:text-lg'>
+                            <div className='btn btn-green w-full text-center bg-lightWhite text-xs text-Gray  hover:bg-lightWhite hover:text-Gray dark:bg-darkBlack dark:text-lightThirdWhite bml:text-sm lg:w-52 lg:text-base xl:w-64 xl:text-lg'>
                                 قیمت:{" "}
                                 {Course.price ? (
                                     <>
                                         {Course.discountPercent ? (
                                             <span>
-                                                <span className='discountPrice relative select-none text-sm text-FifthGray after:-left-[25px]'>
+                                                <span className='discountPrice relative select-none text-sm text-FifthGray'>
                                                     {Course.price.toLocaleString("en-us")}
                                                 </span>{" "}
                                                 <span className='font-yekaBakhBold'>
@@ -43,9 +43,9 @@ const CourseTopPage = ({Course} : {Course : T_Course}) => {
                                 ) : (
                                     <span>رایــگان</span>
                                 )}
-                            </button>
+                            </div>
                             <button className='btn btn-green w-full bg-main p-0 font-yekaBakh text-xs text-lightWhite transition-all duration-300 hover:translate-y-px hover:bg-[#327949] bml:text-sm lg:w-44 lg:text-base xl:w-56 xl:text-lg'>
-                                <div className='flex items-center justify-center px-7 py-3 h-12'>
+                                <div className='flex h-12 items-center justify-center px-7 py-3'>
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
                                         width='15'
