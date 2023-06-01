@@ -5,7 +5,7 @@ import { getContactInfos } from "../../App/Slices/ContactInfo"
 const GreenTopFooter = () => {
     const ContactInfos = useSelector(getContactInfos)
     return (
-        <div className='mt-12 text-lightWhite'>
+        <div className='text-lightWhite'>
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 height='32'
