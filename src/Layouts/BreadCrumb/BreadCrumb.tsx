@@ -12,21 +12,31 @@ const BreadCrumb = () => {
     const AllCategories = useSelector(getCategories)
 
     useEffect(() => {
-        if (pathname.toLocaleLowerCase().startsWith("/categories/")) {
-            const categoryName = pathname.split("/")[2]
-            if (categoryName === "All") {
+        const pathNameParts = pathname.split("/")
+
+        if (pathNameParts[1].toLocaleLowerCase().startsWith("categories")) {
+            if (pathNameParts[2] === "All") {
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
                     { id: 1, title: "همه دسته بندی ها", href: pathname },
                 ])
             } else {
-                const mainCategory = AllCategories.find(category => category.categoryName === categoryName)
+                const mainCategory = AllCategories.find(category => category.categoryName === pathNameParts[2])
                 const mainCategoryTitle = mainCategory?.title
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
                     { id: 1, title: "دسته بندی " + mainCategoryTitle!, href: pathname },
                 ])
             }
+        } else {
+            const mainCategory = AllCategories.find(({ categoryName }) => categoryName === pathNameParts[1])
+            const mainCourse = mainCategory?.courses.find(({ courseName }) => pathNameParts[2] === courseName)
+
+            setBreadCrumbs([
+                { id: 0, title: "خانه", href: "/" },
+                { id: 1, title: "دسته بندی " + mainCategory?.title!, href: `/categories/${mainCategory?.categoryName!}` },
+                { id: 2, title: mainCourse?.title!, href: `/${mainCategory?.categoryName!}/${mainCourse?.courseName!}` },
+            ])
         }
     }, [pathname])
 
