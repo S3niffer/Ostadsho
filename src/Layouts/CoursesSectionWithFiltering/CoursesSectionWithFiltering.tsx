@@ -122,7 +122,7 @@ const CoursesSectionWithFiltering = () => {
     }, [state.paginationDetails.status])
 
     return (
-        <div className='CoursesSectionWithFiltering container px-2 md:px-0'>
+        <div className='CoursesSectionWithFiltering container px-2 md:px-0 mb-12'>
             {useMemo(
                 () => (
                     <SortSection
