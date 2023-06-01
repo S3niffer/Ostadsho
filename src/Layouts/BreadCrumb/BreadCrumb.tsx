@@ -6,7 +6,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
 import { getCategories } from "../../App/Slices/Courses"
 
-const BreadCrumb = () => {
+const BreadCrumb = ({mainCourse}: {mainCourse?: T_Course}) => {
     const [BreadCrumbs, setBreadCrumbs] = useState<T_BreadCrumb[]>([{ id: 0, title: "خانه", href: "/" }])
     const { pathname } = useLocation()
     const AllCategories = useSelector(getCategories)
@@ -30,7 +30,6 @@ const BreadCrumb = () => {
             }
         } else {
             const mainCategory = AllCategories.find(({ categoryName }) => categoryName === pathNameParts[1])
-            const mainCourse = mainCategory?.courses.find(({ courseName }) => pathNameParts[2] === courseName)
 
             setBreadCrumbs([
                 { id: 0, title: "خانه", href: "/" },
