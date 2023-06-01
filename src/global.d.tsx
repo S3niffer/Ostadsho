@@ -116,6 +116,7 @@ declare global {
         | { type: "SET_LastIndex"; payload: number }
         | { type: "UPDATE_PaginateStatus"; payload: boolean }
         | { type: "UPDATE_CategoryCourses"; payload: T_Course[] }
+        | { type: "RESET_Pagination" }
 
     interface T_PriceFillter {
         Dispatch: React.Dispatch<T_Dispatch>

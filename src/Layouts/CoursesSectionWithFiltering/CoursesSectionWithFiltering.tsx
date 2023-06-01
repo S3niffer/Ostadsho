@@ -26,26 +26,29 @@ const initialStater: T_InitialStater = (courses, PageNumber) => {
 }
 
 const Reducer: T_Reducer = (state, action) => {
-    const { type, payload } = action
+    const { type } = action
     switch (type) {
         case "SET_PriceRange": {
-            return { ...state, priceRange: payload }
+            return { ...state, priceRange: action.payload }
         }
         case "SET_SortOption": {
-            return { ...state, sortOrder: payload }
+            return { ...state, sortOrder: action.payload }
         }
         case "SET_LastIndex": {
-            return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: payload } }
+            return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: action.payload } }
         }
         case "UPDATE_PaginateStatus": {
-            if (payload) {
-                return { ...state, paginationDetails: { ...state.paginationDetails, status: payload } }
+            if (action.payload) {
+                return { ...state, paginationDetails: { ...state.paginationDetails, status: action.payload } }
             } else {
-                return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: -1, status: payload } }
+                return { ...state, paginationDetails: { ...state.paginationDetails, lastIndex: -1, status: action.payload } }
             }
         }
         case "UPDATE_CategoryCourses": {
-            return { ...state, categoryCourses: payload }
+            return { ...state, categoryCourses: action.payload }
+        }
+        case "RESET_Pagination": {
+            return { ...state, paginationDetails: { lastIndex: -1, status: false, itemsCount: 3 } }
         }
         default: {
             return state
@@ -121,8 +124,15 @@ const CoursesSectionWithFiltering = () => {
         Navigate(`/categories/${Category_Name}`)
     }, [state.paginationDetails.status])
 
+    // rest pagination after changed Category if its active
+    useEffect(() => {
+        if (!(state.paginationDetails.lastIndex === -1) && !state.paginationDetails.status) return
+
+        Dispatch({ type: "RESET_Pagination" })
+    }, [Category_Name])
+
     return (
-        <div className='CoursesSectionWithFiltering container px-2 md:px-0 mb-12'>
+        <div className='CoursesSectionWithFiltering container mb-12 px-2 md:px-0'>
             {useMemo(
                 () => (
                     <SortSection
