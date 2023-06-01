@@ -1,3 +1,4 @@
+import ThemeHandler from "./Hooks/ThemeHandler"
 import UseScrollandMenubarReset from "./Hooks/UseScrollandMenubarReset"
 import Router from "./Router"
 
@@ -6,6 +7,7 @@ function App() {
         <div className='App max-h-screen overflow-y-auto font-danafa'>
             <div className='content  RTL bg-lightWhite text-Gray dark:bg-darkBlack dark:text-lightWhite'>
                 <UseScrollandMenubarReset />
+                <ThemeHandler />
                 <Router />
             </div>
         </div>
