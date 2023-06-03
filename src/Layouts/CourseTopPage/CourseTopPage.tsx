@@ -20,7 +20,7 @@ const CourseTopPage = ({ Course }: { Course: T_Course }) => {
                             کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
                         </div>
                         <div className='flex flex-col items-center justify-between gap-4 md:flex-row'>
-                            <div className='btn btn-green w-full text-center bg-lightWhite text-xs text-Gray  hover:bg-lightWhite hover:text-Gray dark:bg-darkBlack dark:text-lightThirdWhite bml:text-sm lg:w-52 lg:text-base xl:w-64 xl:text-lg'>
+                            <div className='btn btn-green w-full bg-lightWhite text-center text-xs text-Gray  hover:bg-lightWhite hover:text-Gray dark:bg-darkBlack dark:text-lightThirdWhite bml:text-sm lg:w-52 lg:text-base xl:w-64 xl:text-lg'>
                                 قیمت:{" "}
                                 {Course.price ? (
                                     <>
@@ -44,14 +44,13 @@ const CourseTopPage = ({ Course }: { Course: T_Course }) => {
                                     <span>رایــگان</span>
                                 )}
                             </div>
-                            <button className='btn btn-green w-full bg-main p-0 font-yekaBakh text-xs text-lightWhite transition-all duration-300 hover:translate-y-px hover:bg-[#327949] bml:text-sm lg:w-44 lg:text-base xl:w-56 xl:text-lg'>
-                                <div className='flex h-12 items-center justify-center px-7 py-3'>
+                            <div className='group h-full w-full lg:w-44 xl:w-56'>
+                                <button className='btn btn-green flex h-full w-full items-center justify-center gap-1 bg-main p-0 py-3 font-yekaBakh text-xs text-lightWhite hover:bg-[#327949] bml:text-sm lg:py-0  lg:text-base  xl:text-lg'>
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
-                                        width='15'
-                                        height='15'
+                                        width='18'
+                                        height='18'
                                         fill='none'
-                                        className='mb-px ml-1'
                                         viewBox='0 0 25 25'
                                     >
                                         <path
@@ -67,9 +66,9 @@ const CourseTopPage = ({ Course }: { Course: T_Course }) => {
                                             d='M14.445 12.358a.975.975 0 01-.975-.975v-5.85a.975.975 0 111.95 0v5.85a.975.975 0 01-.975.975z'
                                         ></path>
                                     </svg>
-                                    <span> شرکت در دوره</span>{" "}
-                                </div>
-                            </button>
+                                    <span className='pt-px'> شرکت در دوره</span>{" "}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
