@@ -6,7 +6,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
 import { getCategories } from "../../App/Slices/Courses"
 
-const BreadCrumb = ({mainCourse}: {mainCourse?: T_Course}) => {
+const BreadCrumb = ({ mainCourse }: { mainCourse?: T_Course }) => {
     const [BreadCrumbs, setBreadCrumbs] = useState<T_BreadCrumb[]>([{ id: 0, title: "خانه", href: "/" }])
     const { pathname } = useLocation()
     const AllCategories = useSelector(getCategories)
@@ -43,13 +43,13 @@ const BreadCrumb = ({mainCourse}: {mainCourse?: T_Course}) => {
         <div className='BreadCrumb'>
             <div className='container flex flex-col justify-between px-4 py-10 text-lightWhite md:px-0 lg:flex-row lg:items-center'>
                 <div>
-                    <h3 className='font-danafaBold text-2xl'>تمامی محصولات سایت</h3>
+                    <h3 className='font-danafaBold text-2xl'>با استادشو متخصص شوید!</h3>
                     <div className='mb-5 mt-3 flex gap-4 lg:text-lg'>
                         {BreadCrumbs.map(({ href, id, title }, index) => (
                             <React.Fragment key={id}>
                                 <Link
                                     to={href}
-                                    className={`font-RokhFaNumBold text-lg font-semibold hover:text-[#333333] ${
+                                    className={`pt-1  font-RokhFaNumBold text-[8px] font-semibold  hover:text-[#333333] 2xs:text-[10px] xs:pt-0 xs:text-sm md:text-lg ${
                                         BreadCrumbs.length === ++index ? "text-[#a2d6a8] hover:text-[#a2d6a8]" : undefined
                                     }`}
                                 >
