@@ -1,4 +1,16 @@
-const InstructorSection = ({ className }: { className?: React.HTMLAttributes<HTMLDivElement>["className"] }) => {
+import { useSelector } from "react-redux"
+import { getInstructor } from "../../App/Slices/Instructors"
+import { Link } from "react-router-dom"
+
+const InstructorSection = ({
+    className,
+    instructor,
+}: {
+    instructor: string
+    className?: React.HTMLAttributes<HTMLDivElement>["className"]
+}) => {
+    const Instructor = useSelector((state: RootState) => getInstructor(state, instructor))
+
     return (
         <div className={className}>
             <div className='flex flex-col gap-3'>
@@ -66,21 +78,20 @@ const InstructorSection = ({ className }: { className?: React.HTMLAttributes<HTM
                     <div className='mb-4 flex items-center justify-between'>
                         <div className='flex items-center gap-1 xs:gap-2.5'>
                             <img
-                                src='https://demos.pishtaz-web.com/ostadsho/wp-content/uploads/2022/11/1385361997_fotolia_57841125_subscription_xxl-.jpg'
+                                src={Instructor?.avatarSrc}
                                 alt='avatar'
                                 className='aspect-square w-10 rounded-md xs:w-11 lg:w-14'
                             />
                             <div className='flex flex-col gap-1 text-xs xs:text-sm lg:text-base'>
                                 <span>مدرس دوره</span>
-                                <span>محمد معین مهرانی</span>
+                                <span>{Instructor?.name}</span>
                             </div>
                         </div>
-                        <button className='btn btn-green mt-1 p-3 text-xs xs:text-sm lg:text-base'>صفحه مدرس</button>
+                        <Link to={`/instructors/${Instructor?.instructorName}`}>
+                            <button className='btn btn-green mt-1 p-3 text-xs xs:text-sm lg:text-base'>صفحه مدرس</button>
+                        </Link>
                     </div>
-                    <span className='line-clamp-1 text-sm text-ThirdGray lg:line-clamp-2'>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                        متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است،
-                    </span>
+                    <span className='line-clamp-1 text-sm text-ThirdGray lg:line-clamp-2'>{Instructor?.desc}</span>
                 </div>
             </div>
         </div>

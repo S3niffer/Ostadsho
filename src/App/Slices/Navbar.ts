@@ -39,9 +39,9 @@ const initialState: T_NavbarItem[] = [
         id: 2,
         title: "مدرسان",
         submenu: [
-            { id: 0, link: "/Instructors/mehrani", title: "محمحد معین مهرانی" },
-            { id: 1, link: "/Instructors/madaeni", title: "ایمان مدائنی" },
-            { id: 2, link: "/Instructors/mirmirani", title: "جادی میرمیرانی" },
+            { id: 0, link: "/instructors/saeedirad", title: "محمدامین سعیدی راد" },
+            { id: 1, link: "/instructors/madaeny", title: "ایمان مدائنی" },
+            { id: 2, link: "/instructors/mirmirani", title: "امیرعماد میرمیرانی" },
         ],
     },
 ]

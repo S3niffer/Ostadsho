@@ -5,6 +5,7 @@ import MenubarVisibility from "./Slices/MenubarVisibility"
 import OstadShoComments from "./Slices/OstadshoComment"
 import NavbaItems from "./Slices/Navbar"
 import ContactInfo from "./Slices/ContactInfo"
+import instructors from "./Slices/Instructors"
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         OstadShoComments,
         NavbaItems,
         ContactInfo,
+        instructors,
     },
 })

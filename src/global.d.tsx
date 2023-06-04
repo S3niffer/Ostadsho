@@ -29,23 +29,21 @@ declare global {
         imageSrc: string
         courseName: string
         categoryName: string
-        chapters?: T_chapter[]
+        chapters: T_chapter[]
         comments?: T_Comment[]
         discountPercent?: number
-        instructor?: T_Instructor
+        instructorName?: "madaeny" | "saeedirad" | "mirmirani"
     }
 
     interface T_chapter {
         id: number
         name: string
-        duration: number
         episodes: T_Episode[]
     }
 
     interface T_Episode {
         id: number
         title: string
-        duration: number
         link: string
     }
 
@@ -60,10 +58,9 @@ declare global {
     interface T_Instructor {
         id: number
         name: string
-        age: number
-        profession: string
         avatarSrc: string
         desc: string
+        instructorName: string
     }
 
     interface T_ContactInfo {
