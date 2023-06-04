@@ -36,6 +36,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: HTML,
                 courseName: "html",
                 categoryName: "web-programming",
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 1,
@@ -44,6 +74,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: CSS,
                 courseName: "css",
                 categoryName: "web-programming",
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 2,
@@ -52,6 +112,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: JAVASCRIPT,
                 courseName: "javascript",
                 categoryName: "web-programming",
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 3,
@@ -60,6 +150,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: ReactJS,
                 courseName: "react-js",
                 categoryName: "web-programming",
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 4,
@@ -68,6 +188,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: NODEJS,
                 courseName: "node-js",
                 discountPercent: 65,
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
                 categoryName: "web-programming",
             },
             {
@@ -77,6 +227,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: api_Nodejs,
                 courseName: "api-node-js",
                 categoryName: "web-programming",
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
@@ -93,6 +273,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: Seo,
                 courseName: "seo-course",
                 categoryName: "seo",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
@@ -109,6 +319,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: ai,
                 courseName: "introduction-ai",
                 categoryName: "artificial-intelligence",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 1,
@@ -117,6 +357,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: ml,
                 courseName: "machinelearning-basic",
                 categoryName: "artificial-intelligence",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
@@ -133,6 +403,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: mboileIntro,
                 courseName: "introduction-mobileprogramming",
                 categoryName: "mobile-programming",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 1,
@@ -141,6 +441,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: kotlin,
                 courseName: "kotlin-developing",
                 categoryName: "mobile-programming",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 2,
@@ -149,6 +479,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: reactNative,
                 courseName: "natiive-developing",
                 discountPercent: 23,
+                instructorName: "saeedirad",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
                 categoryName: "mobile-programming",
             },
             {
@@ -158,6 +518,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: swift,
                 courseName: "swift-developing",
                 categoryName: "mobile-programming",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
@@ -174,6 +564,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: cisco,
                 courseName: "cisco",
                 categoryName: "network-and-security",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 1,
@@ -182,6 +602,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: networkPlus,
                 courseName: "network-plus",
                 categoryName: "network-and-security",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 2,
@@ -190,6 +640,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: networksecurity,
                 courseName: "fundamental-network-and-security",
                 categoryName: "network-and-security",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
@@ -206,6 +686,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: javadesktop,
                 courseName: "desktop-with-java",
                 categoryName: "desktop-programming",
+                instructorName: "mirmirani",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
             {
                 id: 1,
@@ -214,6 +724,36 @@ const initialState: T_CategoryItem[] = [
                 imageSrc: csharpDesktop,
                 courseName: "desktop-with-csharp",
                 categoryName: "desktop-programming",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
             },
         ],
     },
