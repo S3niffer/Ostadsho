@@ -1,15 +1,15 @@
 const CourseTopPage = ({ Course }: { Course: T_Course }) => {
     return (
-        <div className='courseMain container px-2 py-4 md:px-0'>
-            <div className='flex flex-col items-center gap-2 lg:flex-row'>
-                <div className='w-full'>
+        <div className='courseMain container px-2 pt-4 pb-3 md:px-0'>
+            <div className='flex flex-col items-center gap-3 lg:flex-row'>
+                <div className='flex-1'>
                     <img
                         src={Course.imageSrc}
                         alt='product'
-                        className='aspect-video w-full rounded-md lg:w-[calc(100%-0.5rem)]'
+                        className='aspect-video w-full rounded-md'
                     />
                 </div>
-                <div className='mt-4 w-full rounded-md bg-lightThirdWhite dark:bg-darkFourthBlack lg:mt-0 lg:aspect-video lg:w-[calc(100%-0.5rem)]'>
+                <div className='flex-1 rounded-md bg-lightThirdWhite dark:bg-darkFourthBlack lg:mt-0 lg:aspect-video'>
                     <div className='flex h-[350px] flex-col justify-between p-8 xs:h-[300px] md:h-60 lg:h-full lg:pt-10 xl:pt-12'>
                         <div className='font-danafaBold text-xl text-Gray dark:text-lightSecondaryWhite lg:text-2xl'>
                             {Course.title}
