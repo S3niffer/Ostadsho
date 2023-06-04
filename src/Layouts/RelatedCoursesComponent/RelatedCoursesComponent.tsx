@@ -90,7 +90,7 @@ const RelatedCoursesComponent = ({
                                         className='ml-2.5 aspect-[3/2] w-14 xs:w-20 md:w-24 lg:ml-0 lg:aspect-auto lg:h-28 lg:w-full'
                                     />
                                     <p className='whitespace-pre-wrap text-[8px] duration-300 xs:text-[10px] md:text-sm lg:absolute lg:inset-0 lg:flex lg:h-full lg:w-full lg:items-center lg:justify-center lg:opacity-0 lg:backdrop-blur-md lg:transition-all lg:hover:text-lightWhite lg:group-hover:opacity-100'>
-                                        <span className='inline-block w-full bg-black/20 px-2 py-2 text-center'>
+                                        <span className='lg:inline-block lg:w-full lg:bg-black/20 p-2 lg:text-center'>
                                             {course.title}
                                         </span>
                                     </p>
