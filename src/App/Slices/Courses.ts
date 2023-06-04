@@ -10,6 +10,7 @@ import ReactJS from "../../Assets/Courses/React.png"
 import NODEJS from "../../Assets/Courses/nodeJs-min.jpg"
 import api_Nodejs from "../../Assets/Courses/Api.png"
 import Seo from "../../Assets/Courses/Seo.jpg"
+import SeoBegin from "../../Assets/Courses/seoBegin.png"
 import ai from "../../Assets/Courses/ai-course.jpg"
 import ml from "../../Assets/Courses/mL.jfif"
 import mboileIntro from "../../Assets/Courses/mobiledevelopingintroduction.jfif"
@@ -266,6 +267,44 @@ const initialState: T_CategoryItem[] = [
         title: "سئو",
         icon: faS,
         courses: [
+            {
+                id: 0,
+                title: "آموزش سئو مقدماتی",
+                price: 120_000,
+                imageSrc: SeoBegin,
+                courseName: "seo-begincourse",
+                categoryName: "seo",
+                instructorName: "madaeny",
+                chapters: [
+                    {
+                        id: 1,
+                        name: "سطح مقدماتی",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        name: "سطح متوسط",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "سطح پیشرفته",
+                        episodes: [
+                            { id: 1, title: "قسمت اول", link: "" },
+                            { id: 2, title: "قسمت دوم", link: "" },
+                            { id: 3, title: "قسمت سوم", link: "" },
+                        ],
+                    },
+                ],
+            },
             {
                 id: 0,
                 title: "آموزش کاربردی Seo(سئو)",
