@@ -52,7 +52,7 @@ input:checked ~ .icon-container svg {
     width: 100%;
     height: 1.5px;
     background: #868686;
-    transform: rotate(-10deg)
+    transform: rotate(-10deg);
 }
 
 .courseCardShadow {
@@ -184,6 +184,11 @@ input:checked ~ .icon-container svg {
 .lds-heart div:after {
     top: -24px;
     border-radius: 50% 50% 0 0;
+}
+.linkIsActive > li {
+    text-decoration-color: #52ac66;
+    text-decoration-line: underline;
+    text-underline-offset: 8px;
 }
 @keyframes lds-heart {
     0% {
