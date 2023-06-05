@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const MenuBarItem = (item: T_NavbarItem) => {
     return (
         <div
             className={`overflow-hidden pb-4 text-ThirdGray  dark:text-lightWhite ${
                 item.lasindex ? "mt-5" : "my-5 border border-transparent border-b-gray-200"
-            }`}>
+            }`}
+        >
             <input
                 type='checkbox'
                 className='absolute z-10 h-7 w-[250px] translate-y-2 cursor-pointer opacity-0'
@@ -31,13 +32,15 @@ const MenuBarItem = (item: T_NavbarItem) => {
                 <div className='ul-container max-h-0 transition-all duration-1000'>
                     <ul className=' flex flex-col gap-1 pt-4'>
                         {item.submenu.map(subItem => (
-                            <Link
+                            <NavLink
+                                className={props => (props.isActive ? "linkIsActive" : "")}
                                 key={subItem.id}
-                                to={subItem.link}>
+                                to={subItem.link}
+                            >
                                 <li className='cursor-pointer rounded-lg bg-lightSecondaryWhite py-2 pr-4 text-sm hover:bg-light_green hover:text-main dark:bg-darkThirdBlack dark:hover:bg-light_green'>
                                     {subItem.title}
                                 </li>
-                            </Link>
+                            </NavLink>
                         ))}
                     </ul>
                 </div>

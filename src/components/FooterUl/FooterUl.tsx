@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import FooterUlIcon from "../FooterUlIcon/FooterUlIcon"
 
 const FooterUl = ({ title, submenu, twoColumn, lasindex }: T_NavbarItem) => {
@@ -11,13 +11,15 @@ const FooterUl = ({ title, submenu, twoColumn, lasindex }: T_NavbarItem) => {
             <ul className={`mt-3 ${twoColumn ? "columns-2" : ""}`}>
                 {submenu
                     ? submenu.map(menu => (
-                          <Link
+                          <NavLink
+                              className={props => (props.isActive ? "linkIsActive" : "")}
                               key={menu.id}
-                              to={menu.link}>
+                              to={menu.link}
+                          >
                               <li className='flex cursor-pointer items-center gap-2 text-xs text-darksixthGray before:block before:h-2 before:w-2 before:-translate-y-[1px] before:rounded-full before:border-[0.7px] before:border-FourthGray before:transition-all before:duration-300 hover:text-main hover:before:h-3 hover:before:w-3 hover:before:border-none hover:before:bg-main  dark:text-FourthGray dark:hover:text-secnodryMain dark:hover:before:bg-secnodryMain md:text-sm lg:text-base xl:text-lg '>
                                   {menu.title}
                               </li>
-                          </Link>
+                          </NavLink>
                       ))
                     : null}
             </ul>
