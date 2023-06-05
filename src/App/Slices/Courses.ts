@@ -636,7 +636,7 @@ const initialState: T_CategoryItem[] = [
             },
             {
                 id: 1,
-                title: "آموزش Network+",
+                title: "آموزش Network",
                 price: 250_000,
                 imageSrc: networkPlus,
                 courseName: "network-plus",
