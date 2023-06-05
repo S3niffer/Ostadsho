@@ -7,7 +7,7 @@ const initialState: T_NavbarItem[] = [
         submenu: [
             { id: 0, link: "/", title: "صفحه اصلی" },
             { id: 1, link: "/categories/All", title: "صفحه فروشگاه" },
-            { id: 2, link: "/basket", title: "صفحه سبد خرید" },
+            { id: 2, link: "/user/courses", title: "صفحه دوره های من" },
         ],
     },
     {
