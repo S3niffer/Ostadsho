@@ -73,7 +73,7 @@ const CoursesSectionWithFiltering = () => {
     useEffect(() => {
         if (state.categoryCourses.length === 0) return
         let Result: T_Course[]
-        if (Category_Name !== "All") {
+        if (Category_Name?.toLocaleLowerCase() !== "all") {
             Result = RawCourses.filter(({ categoryName }) => Category_Name === categoryName)
         } else {
             Result = RawCourses

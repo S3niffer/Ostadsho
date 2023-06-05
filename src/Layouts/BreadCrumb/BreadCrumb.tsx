@@ -15,7 +15,7 @@ const BreadCrumb = ({ mainCourse }: { mainCourse?: T_Course }) => {
         const pathNameParts = pathname.split("/")
 
         if (pathNameParts[1].toLocaleLowerCase().startsWith("categories")) {
-            if (pathNameParts[2] === "All") {
+            if (pathNameParts[2].toLocaleLowerCase() === "all") {
                 setBreadCrumbs([
                     { id: 0, title: "خانه", href: "/" },
                     { id: 1, title: "همه دسته بندی ها", href: pathname },
