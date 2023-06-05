@@ -20,7 +20,6 @@ const InstructorPage = () => {
         obptionBackground.current.style.top = activeOptionOffsetTOP.offsetTop! + "px"
     }, [activeOptionOffsetTOP.offsetTop])
 
-    // console.log(activeOptionOffsetTOP.name)
     return (
         <div className='InstructorPage'>
             <Header shadow />

@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { getCourse } from "../../App/Slices/Courses"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Header from "../../Layouts/Header/Header"
 import Footer from "../../Layouts/Footer/Footer"
 import GreenTopFooter from "../../components/GreenTopFooter/GreenTopFooter"
@@ -11,19 +11,51 @@ import InstructorSection from "../../Layouts/InstructorSection/InstructorSection
 import { getCategory } from "../../App/Slices/Courses"
 import RelatedCoursesComponent from "../../Layouts/RelatedCoursesComponent/RelatedCoursesComponent"
 import CourseTopicsSection from "../../Layouts/CourseTopicsSection/CourseTopicsSection"
+import { getBoughtCourses } from "../../App/Slices/Bought"
+import { getBasketCourses } from "../../App/Slices/Basket"
 
 const Course = () => {
     const { Category_Name, Course_Name } = useParams()
     const Course = useSelector((state: RootState) => getCourse(state, Category_Name!, Course_Name!))
     const Category = useSelector((state: RootState) => getCategory(state, Category_Name!))
+    const BasketCourses = useSelector(getBasketCourses)
+    const BoughtCourses = useSelector(getBoughtCourses)
+    const Dispatch = useDispatch()
+    const [isBought, setIsBought] = useState(false)
 
+    const isInTheBasket = useMemo(() => {
+        return BasketCourses.find(({ courseName }) => Course!.courseName === courseName)
+    }, [BasketCourses, Course, Course_Name])
+
+    useEffect(() => {
+        if (BoughtCourses.length === 0) return
+
+        const Find = BoughtCourses.find(Name => Name === Course_Name)
+
+        if (Find) {
+            setIsBought(true)
+        } else {
+            isBought && setIsBought(false)
+        }
+    }, [BoughtCourses, Category_Name, Course_Name])
     if (Course) {
         return (
             <div className='coursePage'>
                 <Header />
                 <BreadCrumb mainCourse={Course} />
-                <CourseTopPage Course={Course} />
-                <CourseTopicsSection chapters={Course.chapters!} />
+                <CourseTopPage
+                    Course={Course}
+                    isBought={isBought}
+                    isInTheBasket={isInTheBasket}
+                    Dispatch={Dispatch}
+                />
+                <CourseTopicsSection
+                    chapters={Course.chapters!}
+                    isBought={isBought}
+                    Course={Course}
+                    isInTheBasket={isInTheBasket}
+                    Dispatch={Dispatch}
+                />
                 <div className='container mb-10 flex flex-col gap-3 px-2 md:px-0 lg:flex-row'>
                     <InstructorSection
                         instructor={Course.instructorName!}
