@@ -19,6 +19,7 @@ export default {
                 yellowColor: "#ffc737",
                 main: "#52ac66",
                 secnodryMain: "#6acc62",
+                mainHover: "#327249",
                 light_green: "#52AC661F",
                 darkBlack: "#101214",
                 darkSecondaryBlack: "#201c1c",
