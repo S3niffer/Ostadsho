@@ -6,7 +6,8 @@ import OstadShoComments from "./Slices/OstadshoComment"
 import NavbaItems from "./Slices/Navbar"
 import ContactInfo from "./Slices/ContactInfo"
 import instructors from "./Slices/Instructors"
-import basket from "./Slices/Basket"
+import basket, { setBasket } from "./Slices/Basket"
+import Bought, { addToBoughtCourses } from "./Slices/Bought"
 
 export const store = configureStore({
     reducer: {
@@ -18,12 +19,25 @@ export const store = configureStore({
         ContactInfo,
         instructors,
         basket,
+        Bought,
     },
 })
 
 // theme Handler
 const theme = getTheme(store.getState())
-let getThemeromLocalStorage = localStorage.getItem("theme")
+const getThemeromLocalStorage = localStorage.getItem("theme")
 if (theme !== getThemeromLocalStorage) {
     store.dispatch(ThemeChanger())
+}
+
+// basket Handler
+const getBasketItemsLocalStorage = localStorage.getItem("basket")
+if (getBasketItemsLocalStorage) {
+    store.dispatch(setBasket(JSON.parse(getBasketItemsLocalStorage)))
+}
+
+// boughtCourses Handler
+const getBoughtCoursesLocalStorage = localStorage.getItem("bought")
+if (getBoughtCoursesLocalStorage) {
+    store.dispatch(addToBoughtCourses(JSON.parse(getBoughtCoursesLocalStorage)))
 }
