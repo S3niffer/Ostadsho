@@ -1,9 +1,52 @@
 import Accordion from "../../components/Accordion/Accordion"
+import { addCourse } from "../../App/Slices/Basket"
+import { Dispatch, useEffect } from "react"
+import { AnyAction } from "@reduxjs/toolkit"
+import NotificationAlert from "../../components/NotificationAlert/NotificationAlert"
+import { useState } from "react"
+import { useParams } from "react-router-dom"
 
-const CourseTopicsSection = ({ chapters }: { chapters: T_chapter[] }) => {
+const CourseTopicsSection = ({
+    chapters,
+    isBought,
+    Course,
+    isInTheBasket,
+    Dispatch,
+}: {
+    chapters: T_chapter[]
+    isBought: boolean
+    Course: T_Course
+    isInTheBasket: T_Course | undefined
+    Dispatch: Dispatch<AnyAction>
+}) => {
+    const [notification, SetNotification] = useState<("added" | "alreadyAdded")[]>([])
+    const { Category_Name, Course_Name } = useParams()
+
+    useEffect(() => {
+        if (notification.length === 0) return
+        SetNotification([])
+    }, [Category_Name, Course_Name])
     return (
         <div className='container mb-3 px-2 md:px-0'>
-            <div className='rounded-md bg-lightThirdWhite p-5 dark:bg-darkFourthBlack'>
+            {notification.map((notif, index) => {
+                return notif === "added" ? (
+                    <NotificationAlert
+                        key={index}
+                        Name={Course.title}
+                        stat={notif}
+                    />
+                ) : (
+                    <NotificationAlert
+                        key={index}
+                        stat={notif}
+                    />
+                )
+            })}
+            <div
+                className={`rounded-md bg-lightThirdWhite p-5 dark:bg-darkFourthBlack ${
+                    !isBought ? "relative max-h-64 overflow-hidden" : ""
+                }`}
+            >
                 <div className='flex flex-col gap-3'>
                     <div className='flex items-center gap-1'>
                         <svg
@@ -74,6 +117,46 @@ const CourseTopicsSection = ({ chapters }: { chapters: T_chapter[] }) => {
                         />
                     ))}
                 </div>
+                {!isBought ? (
+                    <div className='overlayFadeShadow absolute bottom-0 left-0 flex h-[180px] w-full select-none items-center justify-center bg-gradient-to-b from-transparent to-main/30 backdrop-blur-[2px] lg:h-[175px]'>
+                        <button
+                            onClick={() => {
+                                if (isBought) return
+                                if (isInTheBasket) {
+                                    SetNotification(prv => [...prv, "alreadyAdded"])
+                                } else {
+                                    SetNotification(prv => [...prv, "added"])
+                                    Dispatch(addCourse(Course))
+                                }
+                            }}
+                            className='btn btn-green flex items-center justify-center gap-1 bg-main px-4 py-2 font-yekaBakh text-xs text-lightWhite hover:bg-mainHover bml:text-sm  lg:text-base  xl:text-lg'
+                        >
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                width='18'
+                                height='18'
+                                fill='none'
+                                viewBox='0 0 25 25'
+                                className='scale-75'
+                            >
+                                <path
+                                    fill='#fff'
+                                    d='M19.7 16.746H9.707a2.926 2.926 0 01-2.867-2.35L4.87 4.558h-3.1a.975.975 0 110-1.95h3.9a.975.975 0 01.975.78l2.106 10.628a.975.975 0 00.975.78H19.7a.975.975 0 00.975-.77l1.57-7.313a.975.975 0 00-.975-1.18h-.975a.975.975 0 110-1.95h.975a2.925 2.925 0 012.925 3.55l-1.59 7.312a2.926 2.926 0 01-2.905 2.3zM10.545 24.058a2.925 2.925 0 110-5.85 2.925 2.925 0 010 5.85zm0-3.9a.976.976 0 100 1.952.976.976 0 000-1.952zM19.32 24.058a2.925 2.925 0 110-5.85 2.925 2.925 0 010 5.85zm0-3.9a.976.976 0 100 1.952.976.976 0 000-1.952z'
+                                ></path>
+                                <path
+                                    fill='#fff'
+                                    d='M17.37 9.433h-5.85a.975.975 0 110-1.95h5.85a.975.975 0 110 1.95z'
+                                ></path>
+                                <path
+                                    fill='#fff'
+                                    d='M14.445 12.358a.975.975 0 01-.975-.975v-5.85a.975.975 0 111.95 0v5.85a.975.975 0 01-.975.975z'
+                                ></path>
+                            </svg>
+
+                            <span className='pt-px'> شرکت در دوره</span>
+                        </button>
+                    </div>
+                ) : null}
             </div>
         </div>
     )

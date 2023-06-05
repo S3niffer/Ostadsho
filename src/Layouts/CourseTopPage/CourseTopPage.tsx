@@ -1,6 +1,43 @@
-const CourseTopPage = ({ Course }: { Course: T_Course }) => {
+import { AnyAction, Dispatch } from "@reduxjs/toolkit"
+import { addCourse } from "../../App/Slices/Basket"
+import NotificationAlert from "../../components/NotificationAlert/NotificationAlert"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+
+const CourseTopPage = ({
+    Course,
+    isBought,
+    isInTheBasket,
+    Dispatch,
+}: {
+    Course: T_Course
+    isBought: boolean
+    isInTheBasket: T_Course | undefined
+    Dispatch: Dispatch<AnyAction>
+}) => {
+    const [notification, SetNotification] = useState<("added" | "alreadyAdded")[]>([])
+    const { Category_Name, Course_Name } = useParams()
+
+    useEffect(() => {
+        if (notification.length === 0) return
+        SetNotification([])
+    }, [Category_Name, Course_Name])
     return (
-        <div className='courseMain container px-2 pt-4 pb-3 md:px-0'>
+        <div className='courseMain container px-2 pb-3 pt-4 md:px-0'>
+            {notification.map((notif, index) => {
+                return notif === "added" ? (
+                    <NotificationAlert
+                        key={index}
+                        Name={Course.title}
+                        stat={notif}
+                    />
+                ) : (
+                    <NotificationAlert
+                        key={index}
+                        stat={notif}
+                    />
+                )
+            })}
             <div className='flex flex-col items-center gap-3 lg:flex-row'>
                 <div className='flex-1'>
                     <img
@@ -44,8 +81,19 @@ const CourseTopPage = ({ Course }: { Course: T_Course }) => {
                                     <span>رایــگان</span>
                                 )}
                             </div>
-                            <div className='group h-full w-full lg:w-44 xl:w-56'>
-                                <button className='btn btn-green flex h-full w-full items-center justify-center gap-1 bg-main p-0 py-3 font-yekaBakh text-xs text-lightWhite hover:bg-[#327949] bml:text-sm lg:py-0  lg:text-base  xl:text-lg'>
+                            <div
+                                className='group h-full w-full lg:w-44 xl:w-56'
+                                onClick={() => {
+                                    if (isBought) return
+                                    if (isInTheBasket) {
+                                        SetNotification(prv => [...prv, "alreadyAdded"])
+                                    } else {
+                                        SetNotification(prv => [...prv, "added"])
+                                        Dispatch(addCourse(Course))
+                                    }
+                                }}
+                            >
+                                <button className='btn btn-green flex h-full w-full items-center justify-center gap-1 bg-main p-0 py-3 font-yekaBakh text-xs text-lightWhite hover:bg-mainHover bml:text-sm lg:py-0  lg:text-base  xl:text-lg'>
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
                                         width='18'
@@ -66,7 +114,11 @@ const CourseTopPage = ({ Course }: { Course: T_Course }) => {
                                             d='M14.445 12.358a.975.975 0 01-.975-.975v-5.85a.975.975 0 111.95 0v5.85a.975.975 0 01-.975.975z'
                                         ></path>
                                     </svg>
-                                    <span className='pt-px'> شرکت در دوره</span>{" "}
+                                    {isBought ? (
+                                        <span className='pt-px'>دانشجوی دوره هستید</span>
+                                    ) : (
+                                        <span className='pt-px'> شرکت در دوره</span>
+                                    )}
                                 </button>
                             </div>
                         </div>
