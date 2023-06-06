@@ -227,35 +227,35 @@ input:checked ~ .icon-container svg {
 
 @font-face {
     font-family: "yekaBakh";
-    src: url(Assets/fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
+    src: url(./Fonts/YekanBakhFaNum-Regular.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhBold";
-    src: url(Assets/fonts/YekanBakhFaNum-Bold.woff2) format("woff2");
+    src: url(./Fonts/YekanBakhFaNum-Bold.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhLight";
-    src: url(Assets/fonts/YekanBakhFaNum-Light.woff2) format("woff2");
+    src: url(./Fonts/YekanBakhFaNum-Light.woff2) format("woff2");
 }
 @font-face {
     font-family: "yekaBakhHeavy";
-    src: url(Assets/fonts/YekanBakhFaNum-Heavy.woff2) format("woff2");
+    src: url(./Fonts/YekanBakhFaNum-Heavy.woff2) format("woff2");
 }
 @font-face {
     font-family: "danafa";
-    src: url(Assets/fonts/dana-fanum-regular.woff2) format("woff2");
-    src: url(Assets/fonts/DanaFaNum-Regular.woff2) format("woff2");
+    src: url(./Fonts/dana-fanum-regular.woff2) format("woff2");
+    src: url(./Fonts/DanaFaNum-Regular.woff2) format("woff2");
 }
 @font-face {
     font-family: "danafaBold";
-    src: url(Assets/fonts/DanaFaNum-Bold.woff) format("woff");
-    src: url(Assets/fonts/dana-fanum-bold.woff2) format("woff2");
+    src: url(./Fonts/DanaFaNum-Bold.woff) format("woff");
+    src: url(./Fonts/dana-fanum-bold.woff2) format("woff2");
 }
 @font-face {
     font-family: "RokhFaNumLight";
-    src: url(Assets/fonts/RokhFaNum-Light.woff) format("woff");
+    src: url(./Fonts/RokhFaNum-Light.woff) format("woff");
 }
 @font-face {
     font-family: "RokhFaNumBold";
-    src: url(Assets/fonts/RokhFaNum-Bold.woff) format("woff");
+    src: url(./Fonts/RokhFaNum-Bold.woff) format("woff");
 }
