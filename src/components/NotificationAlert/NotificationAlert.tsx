@@ -28,7 +28,7 @@ const Notificationadded = ({ Name, stat = "added" }: props) => {
     return (
         <div className={`container p-2 md:px-0 ${width === 100 ? "hidden" : "block"}`}>
             <div
-                className={`relative flex items-center justify-between overflow-hidden rounded-[10px] border-t-2  p-2 pr-3.5  ${
+                className={`relative flex flex-col gap-2 overflow-hidden rounded-[10px] border-t-2  p-2 pr-3.5  ${
                     stat === "added" || stat === "bought"
                         ? "border-t-main bg-[#52AC661F] text-main"
                         : "border-t-[#78818e] bg-[#78818e1f] text-[#78818e]"
@@ -49,7 +49,10 @@ const Notificationadded = ({ Name, stat = "added" }: props) => {
                     </p>
                 </div>
                 {stat === "added" || stat === "alreadyAdded" ? (
-                    <Link to='/user/basket'>
+                    <Link
+                        to='/user/basket'
+                        className='mr-auto'
+                    >
                         <button
                             className={`btn  px-2.5 py-1.5 text-sm text-lightWhite transition-all duration-200 hover:translate-y-px  ${
                                 stat === "added" ? "bg-main hover:bg-mainHover" : "bg-[#78818e] hover:bg-[#585f69]"
