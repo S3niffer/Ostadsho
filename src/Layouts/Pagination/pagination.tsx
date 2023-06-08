@@ -31,7 +31,7 @@ const Pagination = ({ items, itemsCount, Dispatch }: T_PaginationProps) => {
     }, [activePage, PageNumber])
 
     return (
-        <div className='mt-8 flex items-center justify-center gap-1.5 rounded-xl bg-[rgb(240,240,240)] py-4 font-danafa font-semibold text-ThirdGray dark:bg-darkFourthBlack'>
+        <div className='mt-8 flex flex-wrap items-center justify-center gap-1.5 rounded-xl bg-[rgb(240,240,240)] py-4 font-danafa font-semibold text-ThirdGray dark:bg-darkFourthBlack'>
             <Link to={`/categories/${Category_Name}/${activePage - 1}`}>
                 <div
                     className={`flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-300 hover:border hover:border-main hover:bg-main hover:text-lightWhite dark:text-SecondaryGray dark:hover:text-lightWhite ${
