@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMemo } from "react"
 
 const SortSection = ({ Dispatch, paginate, sortOrder }: T_SortSectionProp) => {
-    const _onClickHandler = (option: T_SortOption) => {
+    const _onClickHandler = (option: T_SortOption, element: HTMLDivElement) => {
         if (sortOrder === option) {
             Dispatch({ type: "SET_SortOption", payload: "noOrder" })
+            element.blur()
         } else {
             Dispatch({ type: "SET_SortOption", payload: option })
         }
@@ -55,8 +56,8 @@ const SortSection = ({ Dispatch, paginate, sortOrder }: T_SortSectionProp) => {
                             ? "bg-main text-lightSecondaryWhite dark:bg-main dark:text-lightSecondaryWhite"
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
-                    onClick={() => {
-                        _onClickHandler("Cheap")
+                    onClick={e => {
+                        _onClickHandler("Cheap", e.currentTarget)
                     }}
                 >
                     <svg
@@ -194,8 +195,8 @@ const SortSection = ({ Dispatch, paginate, sortOrder }: T_SortSectionProp) => {
                             ? "bg-main text-lightSecondaryWhite dark:bg-main dark:text-lightSecondaryWhite"
                             : "bg-lightWhite text-darksixthGray hover:bg-main hover:text-lightWhite dark:bg-darkFourthBlack dark:text-lightSecondaryWhite/90 dark:hover:bg-main"
                     }`}
-                    onClick={() => {
-                        _onClickHandler("Expensive")
+                    onClick={e => {
+                        _onClickHandler("Expensive", e.currentTarget)
                     }}
                 >
                     <svg
