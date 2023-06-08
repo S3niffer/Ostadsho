@@ -49,13 +49,18 @@ const BreadCrumb = ({ mainCourse }: { mainCourse?: T_Course }) => {
                             <React.Fragment key={id}>
                                 <Link
                                     to={href}
-                                    className={`pt-1  font-RokhFaNumBold font-semibold  hover:text-[#333333] xs:pt-0 xs:text-sm md:text-lg ${
+                                    className={`font-RokhFaNumBold font-semibold  hover:text-[#333333] xs:pt-0 xs:text-sm md:text-lg ${
                                         BreadCrumbs.length === ++index ? "text-[#a2d6a8] hover:text-[#a2d6a8]" : undefined
                                     }`}
                                 >
                                     {" " + title + " "}
                                 </Link>
-                                {BreadCrumbs.length === index ? null : <FontAwesomeIcon icon={faChevronLeft} />}
+                                {BreadCrumbs.length === index ? null : (
+                                    <FontAwesomeIcon
+                                        icon={faChevronLeft}
+                                        className='pt-0.5 2xs:pt-0 md:pt-0.5'
+                                    />
+                                )}
                             </React.Fragment>
                         ))}
                     </div>
