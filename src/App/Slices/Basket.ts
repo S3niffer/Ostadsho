@@ -16,7 +16,9 @@ const Basket = createSlice({
             localStorage.setItem("basket", JSON.stringify(state))
         },
         removeCourse: (state, action) => {
-            return state.filter(course => course.courseName !== action.payload)
+            const filtered = state.filter(course => course.courseName !== action.payload)
+            localStorage.setItem("basket", JSON.stringify(filtered))
+            return filtered
         },
         setBasket: (state, action: { type: string; payload: T_Course[] }) => {
             return action.payload
