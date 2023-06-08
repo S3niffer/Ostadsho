@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 const CourseCard = ({ categoryName, courseName, imageSrc, price, title, discountPercent }: T_Course) => {
     return (
         <Link to={`/${categoryName}/${courseName}`}>
-            <div className='courseCard group/Card relative cursor-pointer px-2 pt-4 md:px-0'>
-                <div className='courseCardShadow rounded-md bg-lightWhite pt-32 dark:bg-darkFourthBlack lg:pt-24'>
+            <div className='courseCard group/Card relative cursor-pointer pt-4 md:px-0'>
+                <div className='courseCardShadow rounded-md bg-lightWhite pt-[88px] dark:bg-darkFourthBlack lg:pt-24'>
                     <div className='flex h-full w-full flex-col gap-8 p-3  pt-0 xl:gap-10 '>
                         <p className='inline max-w-max cursor-pointer font-yekaBakhBold transition-colors duration-300 hover:text-main lg:text-lg'>
                             {title}
@@ -94,7 +94,7 @@ const CourseCard = ({ categoryName, courseName, imageSrc, price, title, discount
                         </div>
                     </div>
                 </div>
-                <div className='absolute -top-9 left-0 right-0 mx-4 h-40 overflow-hidden rounded-md lg:h-32'>
+                <div className='absolute -top-4 left-0 right-0 mx-2 h-28 overflow-hidden rounded-md min-[350px]:-top-9 2xs:h-32 lg:h-32'>
                     <img
                         src={imageSrc}
                         alt='course'
