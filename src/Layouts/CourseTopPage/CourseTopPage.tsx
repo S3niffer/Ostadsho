@@ -66,7 +66,7 @@ const CourseTopPage = ({
                                                 <span className='discountPrice relative select-none text-sm text-FifthGray'>
                                                     {Course.price.toLocaleString("en-us")}
                                                 </span>{" "}
-                                                <span className='font-yekaBakhBold'>
+                                                <span className='font-yekaBakhBold text-lg'>
                                                     {(Course.price * ((100 - Course.discountPercent) / 100)).toLocaleString(
                                                         "en-us"
                                                     )}
