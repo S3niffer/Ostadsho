@@ -10,7 +10,7 @@ const CommentSection = () => {
     const Comments = useSelector(getAllOstadshoComment)
 
     return (
-        <div className='CommentSection container overflow-hidden pb-12 md:overflow-visible'>
+        <div className='CommentSection container overflow-hidden px-2 md:mx-0 pb-12 md:overflow-visible'>
             <div className='grid grid-cols-1 gap-y-10 md:grid-cols-2 md:items-center'>
                 <div className='flex flex-col gap-4 md:gap-4'>
                     <div className='flex flex-col gap-4 md:flex-row'>
