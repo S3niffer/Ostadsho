@@ -18,6 +18,10 @@ const InstructorPage = () => {
     useEffect(() => {
         if (!obptionBackground.current) return
         obptionBackground.current.style.top = activeOptionOffsetTOP.offsetTop! + "px"
+        document.querySelector(".App")?.scrollTo({
+            behavior: "smooth",
+            top: 135,
+        })
     }, [activeOptionOffsetTOP.offsetTop])
 
     return (
