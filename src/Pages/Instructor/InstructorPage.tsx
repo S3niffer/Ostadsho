@@ -69,7 +69,7 @@ const InstructorPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`flex-1`}>
+                    <div className={`flex-1 pr-1.5`}>
                         <div className={`text-justify ${activeOptionOffsetTOP.name === "bio" ? "block" : "hidden"}`}>
                             {Instructor?.desc}
                         </div>
