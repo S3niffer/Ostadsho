@@ -8,7 +8,7 @@ const FooterUl = ({ title, submenu, twoColumn, lasindex }: T_NavbarItem) => {
                 <FooterUlIcon />
                 {title}
             </p>
-            <ul className={`mt-3 ${twoColumn ? "columns-2" : ""}`}>
+            <ul className={`mt-3 ${twoColumn ? "grid grid-cols-2" : ""}`}>
                 {submenu
                     ? submenu.map(menu => (
                           <NavLink
